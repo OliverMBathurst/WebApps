@@ -1,0 +1,12 @@
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp3.1\EntropyServer.Infrastructure.deps.json
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp3.1\EntropyServer.Infrastructure.dll
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp3.1\EntropyServer.Infrastructure.pdb
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp3.1\EntropyServer.Domain.dll
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp3.1\EntropyServer.Domain.pdb
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp3.1\EntropyServer.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp3.1\EntropyServer.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp3.1\EntropyServer.Infrastructure.AssemblyInfo.cs
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp3.1\EntropyServer.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp3.1\EntropyServer.Infrastructure.csproj.CopyComplete
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp3.1\EntropyServer.Infrastructure.dll
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp3.1\EntropyServer.Infrastructure.pdb

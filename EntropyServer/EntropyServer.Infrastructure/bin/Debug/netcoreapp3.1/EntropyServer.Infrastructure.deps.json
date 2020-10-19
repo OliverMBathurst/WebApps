@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "EntropyServer.Infrastructure/1.0.0": {
+        "dependencies": {
+          "EntropyServer.Domain": "1.0.0"
+        },
+        "runtime": {
+          "EntropyServer.Infrastructure.dll": {}
+        }
+      },
+      "EntropyServer.Domain/1.0.0": {
+        "runtime": {
+          "EntropyServer.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EntropyServer.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EntropyServer.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

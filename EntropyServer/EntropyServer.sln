@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntropyServer", "EntropyServer\EntropyServer.csproj", "{69FE44BC-D8C2-49EE-B9FC-3899519EFFA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntropyServer", "EntropyServer\EntropyServer.csproj", "{69FE44BC-D8C2-49EE-B9FC-3899519EFFA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntropyServer.Domain", "EntropyServer.Domain\EntropyServer.Domain.csproj", "{0212689E-23C4-453F-AC40-1961079FF6EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntropyServer.Infrastructure", "EntropyServer.Infrastructure\EntropyServer.Infrastructure.csproj", "{13E80151-5016-4206-B927-6651C70F8118}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{69FE44BC-D8C2-49EE-B9FC-3899519EFFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69FE44BC-D8C2-49EE-B9FC-3899519EFFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69FE44BC-D8C2-49EE-B9FC-3899519EFFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0212689E-23C4-453F-AC40-1961079FF6EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0212689E-23C4-453F-AC40-1961079FF6EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0212689E-23C4-453F-AC40-1961079FF6EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0212689E-23C4-453F-AC40-1961079FF6EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13E80151-5016-4206-B927-6651C70F8118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13E80151-5016-4206-B927-6651C70F8118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13E80151-5016-4206-B927-6651C70F8118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13E80151-5016-4206-B927-6651C70F8118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
