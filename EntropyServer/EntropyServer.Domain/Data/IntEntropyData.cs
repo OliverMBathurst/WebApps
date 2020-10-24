@@ -6,13 +6,13 @@ namespace EntropyServer.Data
 {
     public sealed class IntEntropyData : IEntropyData<int>
     {
-        private readonly IEntropyGenerator<int> _entropyGenerator;
+        private readonly IEntropyServerBackgroundService _entropyBackgroundService;
 
-        public IntEntropyData(IEntropyGenerator<int> entropyGenerator) => _entropyGenerator = entropyGenerator;
+        public IntEntropyData(IEntropyServerBackgroundService entropyBackgroundService) => _entropyBackgroundService = entropyBackgroundService;
 
         public async Task<IEntropyResult<int>> GetResult()
         {
-            var result = await _entropyGenerator.Fetch();
+            var result = await _entropyBackgroundService.GetEntropy<int>();
             return new IntEntropyResult
             {
                 Success = true,

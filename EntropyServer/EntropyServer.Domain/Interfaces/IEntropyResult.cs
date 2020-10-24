@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EntropyServer.Domain.Interfaces
+﻿namespace EntropyServer.Domain.Interfaces
 {
     public interface IEntropyResult<T>
     {

@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using EntropyServer.Domain;
 using EntropyServer.Domain.Enums;
+using EntropyServer.Domain.Extensions;
 using EntropyServer.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,11 +27,19 @@ namespace EntropyServer.Controllers
         [Route("[controller]/result?type={entropyType}")]
         public async Task<IActionResult> GetResult([FromQuery] int entropyType)
         {
-            var type = (EntropyType)entropyType;
+            if (entropyType.ToEntropyType(out var entropyTypeResult))
+            {
+                _logger.LogInformation($"Valid entropy type: {entropyTypeResult}, generating entropy.");
+                var result = await _entropyServiceSelector.GetResult((EntropyType)entropyType);
 
-            var result = await _entropyServiceSelector.GetResult(type);
+                if (result != null)
+                    return Ok(result);
 
-            return new OkObjectResult(result);
+                return NotFound();
+            }
+            
+            _logger.LogError($"Invalid entropy type ID: {entropyType}.");
+            return BadRequest();
         }
     }
 }

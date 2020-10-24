@@ -2,7 +2,9 @@
 {
     public enum EntropyType
     {
-        Int = 1,
-        Float = 2
+        Int,
+        Float,
+        Hash,
+        Undefined
     }
 }

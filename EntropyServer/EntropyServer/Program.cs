@@ -1,4 +1,6 @@
+using EntropyServer.Services;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace EntropyServer
@@ -17,7 +19,7 @@ namespace EntropyServer
                     webBuilder.UseStartup<Startup>();
                 }).ConfigureServices(services => 
                 {
-
+                    services.AddSingleton<IHostedService, EntropyServerBackgroundService>();
                 });
     }
 }
