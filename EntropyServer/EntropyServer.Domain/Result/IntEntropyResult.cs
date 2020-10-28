@@ -1,4 +1,5 @@
-﻿using EntropyServer.Domain.Interfaces;
+﻿using EntropyServer.Domain.Enums;
+using EntropyServer.Domain.Interfaces;
 
 namespace EntropyServer.Domain.Result
 {
@@ -10,7 +11,7 @@ namespace EntropyServer.Domain.Result
 
         public IGenericEntropyResult ToGenericEntropyResult() => new GenericEntropyResult
         {
-            Type = typeof(int),
+            Type = EntropyType.Int,
             Success = Success,
             Value = Value
         };

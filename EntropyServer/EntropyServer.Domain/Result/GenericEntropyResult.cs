@@ -1,11 +1,11 @@
-﻿using EntropyServer.Domain.Interfaces;
-using System;
+﻿using EntropyServer.Domain.Enums;
+using EntropyServer.Domain.Interfaces;
 
-namespace EntropyServer.Domain
+namespace EntropyServer.Domain.Result
 {
     public sealed class GenericEntropyResult : IGenericEntropyResult
     {
-        public Type Type { get; set; }
+        public EntropyType Type { get; set; }
 
         public bool Success { get; set; }
 

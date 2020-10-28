@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using EntropyServer.Domain;
-using EntropyServer.Domain.Enums;
 using EntropyServer.Domain.Extensions;
 using EntropyServer.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +28,7 @@ namespace EntropyServer.Controllers
             if (entropyType.ToEntropyType(out var entropyTypeResult))
             {
                 _logger.LogInformation($"Valid entropy type: {entropyTypeResult}, generating entropy.");
-                var result = await _entropyServiceSelector.GetResult((EntropyType)entropyType);
+                var result = await _entropyServiceSelector.GetResult(entropyTypeResult);
 
                 if (result != null)
                     return Ok(result);

@@ -1,6 +1,6 @@
 ﻿using EntropyServer.Domain.Enums;
-using EntropyServer.Domain.Extensions;
 using EntropyServer.Domain.Interfaces;
+using EntropyServer.Domain.Mappings;
 
 namespace EntropyServer.Domain.Mappers
 {
@@ -15,7 +15,7 @@ namespace EntropyServer.Domain.Mappers
         }
 
         public IEntropyService<T> GetService<T>() 
-            => typeof(T).ToEntropyType() switch
+            => DataMappings.GetEntropyType<T>() switch
             {
                 EntropyType.Int => (IEntropyService<T>) _intEntropyService,
                 _ => null

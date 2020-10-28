@@ -1,5 +1,4 @@
 ﻿using EntropyServer.Domain.Interfaces;
-using System;
 using System.Threading.Tasks;
 
 namespace EntropyServer.Services.EntropyServices

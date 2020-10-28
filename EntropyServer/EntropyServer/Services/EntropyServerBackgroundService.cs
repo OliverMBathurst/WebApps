@@ -19,7 +19,7 @@ namespace EntropyServer.Services
             _entropyPool = entropyPool;
             _intEntropyGenerator = intEntropyGenerator;
 
-            _entropyPool.AddSubPool(typeof(int));
+            _entropyPool.AddSubPool(_intEntropyGenerator.EntropyResultType);
         }
 
         public async Task<T> GetEntropy<T>() => DataMappings.GetEntropyType<T>() switch

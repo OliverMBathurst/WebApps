@@ -1,10 +1,10 @@
-﻿using System;
+﻿using EntropyServer.Domain.Enums;
 
 namespace EntropyServer.Domain.Interfaces
 {
     public interface IGenericEntropyResult
     {
-        Type Type { get; set; }
+        EntropyType Type { get; set; }
 
         bool Success { get; set; }
 
