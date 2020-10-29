@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj"
+              "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj": {
+                "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj": {
+    "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj",
-        "projectName": "EntropyServer.Infrastructure",
-        "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj",
+        "projectName": "EntropyServer.Extensions",
+        "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj",
         "packagesPath": "C:\\Users\\Oliver\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

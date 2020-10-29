@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntropyServer.Domain.Enums;
+using System;
 
 namespace EntropyServer.Domain.Interfaces
 {
@@ -7,6 +8,8 @@ namespace EntropyServer.Domain.Interfaces
         void AddEntropy(Type type, object entropy);
 
         void AddSubPool(Type type);
+
+        void AddSubPool(EntropyType type);
 
         void DrainSubPool(Type type);
     }

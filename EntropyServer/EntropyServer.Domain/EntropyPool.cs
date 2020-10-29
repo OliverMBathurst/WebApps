@@ -1,5 +1,6 @@
-﻿using EntropyServer.Domain.Interfaces;
-using EntropyServer.Domain.Extensions;
+﻿using EntropyServer.Domain.Enums;
+using EntropyServer.Domain.Interfaces;
+using EntropyServer.Extensions;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace EntropyServer.Domain
         public void AddSubPool(Type type)
         {
             _entropyPoolDictionary.TryAdd(type, new List<object>());
+        }
+
+        public void AddSubPool(EntropyType type)
+        {
+            //add logic here
         }
 
         public void DrainSubPool(Type type)

@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntropyServer.Infrastructure\EntropyServer.Infrastructure.csproj" />
+    <ProjectReference Include="..\EntropyServer.Extensions\EntropyServer.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

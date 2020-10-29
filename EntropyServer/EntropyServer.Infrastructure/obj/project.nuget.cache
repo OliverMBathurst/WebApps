@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "pRW3Wa4nIY2yTcIq54Sm2nChY7S4rRRRhsjmM0+37kkWOJOHi5TuDzOG1CYIo2NljwzC6xmBokMwHgQX3weYVg==",
+  "dgSpecHash": "5rLElgprQvfDAX3qniyZxwmEAEfIgPHwjKUJ4XmTd1i89LXnbX4wD+mxVKx9a8pyPm9HUjCi3LJSirt/8xmzSw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Oliver\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.9\\microsoft.extensions.configuration.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\Oliver\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.9\\microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\Oliver\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.9\\microsoft.extensions.fileproviders.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\Oliver\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\3.1.9\\microsoft.extensions.hosting.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\Oliver\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.9\\microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\Oliver\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.9\\microsoft.extensions.primitives.3.1.9.nupkg.sha512"
+  ],
   "logs": []
 }

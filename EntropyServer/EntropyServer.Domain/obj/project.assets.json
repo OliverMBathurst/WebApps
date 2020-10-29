@@ -11,14 +11,14 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
-      "EntropyServer.Infrastructure/1.0.0": {
+      "EntropyServer.Extensions/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "compile": {
-          "bin/placeholder/EntropyServer.Infrastructure.dll": {}
+          "bin/placeholder/EntropyServer.Extensions.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EntropyServer.Infrastructure.dll": {}
+          "bin/placeholder/EntropyServer.Extensions.dll": {}
         }
       }
     }
@@ -38,15 +38,15 @@
         "microsoft.extensions.logging.abstractions.nuspec"
       ]
     },
-    "EntropyServer.Infrastructure/1.0.0": {
+    "EntropyServer.Extensions/1.0.0": {
       "type": "project",
-      "path": "../EntropyServer.Infrastructure/EntropyServer.Infrastructure.csproj",
-      "msbuildProject": "../EntropyServer.Infrastructure/EntropyServer.Infrastructure.csproj"
+      "path": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj",
+      "msbuildProject": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "EntropyServer.Infrastructure >= 1.0.0",
+      "EntropyServer.Extensions >= 1.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 3.1.9"
     ]
   },
@@ -80,8 +80,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj"
+            "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj": {
+              "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj"
             }
           }
         }

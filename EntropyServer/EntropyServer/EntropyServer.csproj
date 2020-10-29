@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntropyServer.Domain\EntropyServer.Domain.csproj" />
+    <ProjectReference Include="..\EntropyServer.Infrastructure\EntropyServer.Infrastructure.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

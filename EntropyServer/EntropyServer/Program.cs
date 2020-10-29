@@ -1,4 +1,12 @@
-using EntropyServer.Services;
+using EntropyServer.Domain;
+using EntropyServer.Domain.Interfaces;
+using EntropyServer.Domain.Result;
+using EntropyServer.Infrastructure.Data;
+using EntropyServer.Infrastructure.Generators;
+using EntropyServer.Infrastructure.Mappers;
+using EntropyServer.Infrastructure.Selectors;
+using EntropyServer.Infrastructure.Services;
+using EntropyServer.Infrastructure.Services.EntropyServices;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,7 +27,16 @@ namespace EntropyServer
                     webBuilder.UseStartup<Startup>();
                 }).ConfigureServices(services => 
                 {
-                    services.AddSingleton<IHostedService, EntropyServerBackgroundService>();
+                    services.AddScoped<IEntropyData<int>, IntEntropyData>()                    
+                    .AddScoped<IEntropyResult<int>, IntEntropyResult>()
+                    .AddScoped<IEntropyServerBackgroundService, EntropyServerBackgroundService>()
+                    .AddScoped<IEntropyService<int>, IntEntropyService>()
+                    .AddScoped<IEntropyServiceMapper, EntropyServiceMapper>()
+                    .AddScoped<IEntropyServiceSelector, EntropyServiceSelector>()
+                    .AddScoped<IGenericEntropyResult, GenericEntropyResult>()
+                    .AddSingleton<IHostedService, EntropyServerBackgroundService>()
+                    .AddSingleton<IEntropyGenerator<int>, IntEntropyGenerator>()
+                    .AddSingleton<IEntropyPool, EntropyPool>();
                 });
     }
 }

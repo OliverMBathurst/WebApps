@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using EntropyServer.Domain.Extensions;
+using EntropyServer.Common.Mappings;
 using EntropyServer.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -22,10 +22,10 @@ namespace EntropyServer.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/result?type={entropyType}")]
+        [Route("[controller]/result/type={entropyType}")]
         public async Task<IActionResult> GetResult([FromQuery] int entropyType)
         {
-            if (entropyType.ToEntropyType(out var entropyTypeResult))
+            if (DataMappings.ToEntropyType(entropyType, out var entropyTypeResult))
             {
                 _logger.LogInformation($"Valid entropy type: {entropyTypeResult}, generating entropy.");
                 var result = await _entropyServiceSelector.GetResult(entropyTypeResult);
