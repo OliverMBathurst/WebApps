@@ -1,6 +1,5 @@
 ﻿using EntropyServer.Domain.Enums;
 using EntropyServer.Domain.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,14 +9,14 @@ namespace EntropyServer.Infrastructure.Generators
     {
         public EntropyType EntropyResultType => EntropyType.Int;
 
-        public Task<int> Fetch()
+        public async Task<int> Fetch()
         {
-            throw new NotImplementedException();
+            return 1;
         }
 
-        public Task<IEnumerable<int>> Fetch(int number)
+        public async Task<IEnumerable<int>> Fetch(int number)
         {
-            throw new NotImplementedException();
+            return new[] { 1 };
         }
     }
 }

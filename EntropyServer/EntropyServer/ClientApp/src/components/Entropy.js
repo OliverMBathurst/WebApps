@@ -3,28 +3,31 @@ import React, { Component } from 'react';
 export class Entropy extends Component {
   static displayName = Entropy.name;
 
-  constructor(props) {
-    super(props);
-    this.state = { currentCount: 0 };
-    this.incrementCounter = this.incrementCounter.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {}
+        this.fetchEntropy = this.fetchEntropy.bind(this);
+    }
 
-  incrementCounter() {
-    this.setState({
-      currentCount: this.state.currentCount + 1
-    });
-  }
+    async fetchEntropy () {
+        const response = await fetch('entropy/fetch/type/1')
+        const data = await response.json();
+
+        this.setState({
+            number: data.value
+        })        
+    }
 
   render() {
     return (
       <div>
-        <h1>Counter</h1>
+        <h1>Entropy</h1>
 
         <p>This is a simple example of a React component.</p>
 
-        <p aria-live="polite">Current count: <strong>{this.state.currentCount}</strong></p>
+        <p aria-live="polite">Entropy: <strong>{this.state.number}</strong></p>
 
-        <button className="btn btn-primary" onClick={this.incrementCounter}>Increment</button>
+        <button className="btn btn-primary" onClick={this.fetchEntropy}>Increment</button>
       </div>
     );
   }

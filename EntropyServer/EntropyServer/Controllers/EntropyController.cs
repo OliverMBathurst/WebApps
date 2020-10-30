@@ -22,10 +22,10 @@ namespace EntropyServer.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/result/type={entropyType}")]
-        public async Task<IActionResult> GetResult([FromQuery] int entropyType)
+        [Route("fetch/type/{entropyTypeId}")]
+        public async Task<IActionResult> GetResult([FromRoute] int entropyTypeId)
         {
-            if (DataMappings.ToEntropyType(entropyType, out var entropyTypeResult))
+            if (DataMappings.ToEntropyType(entropyTypeId, out var entropyTypeResult))
             {
                 _logger.LogInformation($"Valid entropy type: {entropyTypeResult}, generating entropy.");
                 var result = await _entropyServiceSelector.GetResult(entropyTypeResult);
@@ -36,7 +36,7 @@ namespace EntropyServer.Controllers
                 return NotFound();
             }
             
-            _logger.LogError($"Invalid entropy type ID: {entropyType}.");
+            _logger.LogError($"Invalid entropy type ID: {entropyTypeId}.");
             return BadRequest();
         }
     }
