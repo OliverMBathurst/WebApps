@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
-using EntropyServer.Common.Mappings;
+﻿using EntropyServer.Common.Mappings;
+using EntropyServer.Domain.Enums;
 using EntropyServer.Domain.Interfaces;
+using EntropyServer.Domain.TransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace EntropyServer.Controllers
 {
@@ -11,33 +13,34 @@ namespace EntropyServer.Controllers
     public class EntropyController : ControllerBase
     {
         private readonly ILogger<EntropyController> _logger;
-        private readonly IEntropyServiceSelector _entropyServiceSelector;
+        private readonly IEntropyServiceMapper _entropyServiceMapper;
 
         public EntropyController(
             ILogger<EntropyController> logger,
-            IEntropyServiceSelector entropyServiceSelector)
+            IEntropyServiceMapper entropyServiceMapper)
         {
             _logger = logger;
-            _entropyServiceSelector = entropyServiceSelector;
+            _entropyServiceMapper = entropyServiceMapper;
         }
 
         [HttpGet]
-        [Route("fetch/type/{entropyTypeId}")]
-        public async Task<IActionResult> GetResult([FromRoute] int entropyTypeId)
+        public async Task<IActionResult> GetEntropyResult([FromQuery] EntropyFilterDto entropyFilterDto)
         {
-            if (DataMappings.ToEntropyType(entropyTypeId, out var entropyTypeResult))
+            if (DataMappings.ToEntropyType(entropyFilterDto.EntropyTypeID, out var entropyType))
             {
-                _logger.LogInformation($"Valid entropy type: {entropyTypeResult}, generating entropy.");
-                var result = await _entropyServiceSelector.GetResult(entropyTypeResult);
+                _logger.LogInformation($"Valid entropy type: {entropyType}, generating entropy.");
 
-                if (result != null)
-                    return Ok(result);
-
-                return NotFound();
+                return entropyType switch
+                {
+                    EntropyType.Int => Ok(await _entropyServiceMapper.GetService<int>().GetResult()),
+                    _ => BadRequest()
+                };
             }
-            
-            _logger.LogError($"Invalid entropy type ID: {entropyTypeId}.");
-            return BadRequest();
+            else
+            {
+                _logger.LogError($"Invalid entropy type ID: {entropyFilterDto.EntropyTypeID}.");
+                return BadRequest();
+            }
         }
     }
 }

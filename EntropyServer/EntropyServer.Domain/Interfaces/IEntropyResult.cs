@@ -5,7 +5,5 @@
         bool Success { get; set; }
 
         T Value { get; set; }
-
-        IGenericEntropyResult ToGenericEntropyResult();
     }
 }

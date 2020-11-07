@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { EntropyEndpoint } from '../constants'
 
 export class Entropy extends Component {
-  static displayName = Entropy.name;
+    static displayName = Entropy.name;
 
     constructor(props) {
         super(props);
@@ -10,7 +11,7 @@ export class Entropy extends Component {
     }
 
     async fetchEntropy () {
-        const response = await fetch('entropy/fetch/type/1')
+        const response = await fetch(`${EntropyEndpoint}?EntropyTypeID=1`)
         const data = await response.json();
 
         this.setState({
@@ -27,7 +28,7 @@ export class Entropy extends Component {
 
         <p aria-live="polite">Entropy: <strong>{this.state.number}</strong></p>
 
-        <button className="btn btn-primary" onClick={this.fetchEntropy}>Increment</button>
+        <button className="btn btn-primary" onClick={this.fetchEntropy}>Fetch</button>
       </div>
     );
   }

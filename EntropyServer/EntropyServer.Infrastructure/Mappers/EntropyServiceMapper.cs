@@ -10,7 +10,6 @@ namespace EntropyServer.Infrastructure.Mappers
 
         public EntropyServiceMapper(IEntropyService<int> intEntropyService)
         {
-            //inject more services here
             _intEntropyService = intEntropyService;            
         }
 
@@ -18,6 +17,13 @@ namespace EntropyServer.Infrastructure.Mappers
             => DataMappings.GetEntropyType<T>() switch
             {
                 EntropyType.Int => (IEntropyService<T>) _intEntropyService,
+                _ => null
+            };
+
+        public IEntropyService<T> GetService<T>(EntropyType entropyType)
+            => entropyType switch
+            {
+                EntropyType.Int => (IEntropyService<T>)_intEntropyService,
                 _ => null
             };
     }

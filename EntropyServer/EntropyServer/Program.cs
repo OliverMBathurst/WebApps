@@ -4,7 +4,6 @@ using EntropyServer.Domain.Result;
 using EntropyServer.Infrastructure.Data;
 using EntropyServer.Infrastructure.Generators;
 using EntropyServer.Infrastructure.Mappers;
-using EntropyServer.Infrastructure.Selectors;
 using EntropyServer.Infrastructure.Services;
 using EntropyServer.Infrastructure.Services.EntropyServices;
 using Microsoft.AspNetCore.Hosting;
@@ -32,8 +31,6 @@ namespace EntropyServer
                     .AddScoped<IEntropyServerBackgroundService, EntropyServerBackgroundService>()
                     .AddScoped<IEntropyService<int>, IntEntropyService>()
                     .AddScoped<IEntropyServiceMapper, EntropyServiceMapper>()
-                    .AddScoped<IEntropyServiceSelector, EntropyServiceSelector>()
-                    .AddScoped<IGenericEntropyResult, GenericEntropyResult>()
                     .AddSingleton<IHostedService, EntropyServerBackgroundService>()
                     .AddSingleton<IEntropyGenerator<int>, IntEntropyGenerator>()
                     .AddSingleton<IEntropyPool, EntropyPool>();
