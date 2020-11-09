@@ -34,6 +34,7 @@ namespace EntropyServer
                     .AddSingleton<IEntropyService<int>, IntEntropyService>()
                     .AddSingleton<IEntropyServiceMapper, EntropyServiceMapper>()
                     .AddSingleton<IEntropyTypeRepository, EntropyTypeRepository>()
+                    .AddSingleton<IEntropyGeneratorRepository, EntropyGeneratorRepository>()
                     .AddSingleton<IHostedService, EntropyServerBackgroundService>()
                     .AddSingleton<IEntropyGenerator<int>, IntEntropyGenerator>()
                     .AddSingleton<IEntropyPool, EntropyPool>();

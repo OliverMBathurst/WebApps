@@ -1,6 +1,4 @@
-﻿using EntropyServer.Common.Mappings;
-using EntropyServer.Domain.Enums;
-using EntropyServer.Domain.Interfaces;
+﻿using EntropyServer.Domain.Interfaces;
 using EntropyServer.Domain.TransferObjects;
 using Microsoft.Extensions.Hosting;
 using System.Threading;
@@ -11,28 +9,31 @@ namespace EntropyServer.Infrastructure.Services
     public sealed class EntropyServerBackgroundService : IHostedService, IEntropyServerBackgroundService
     {
         private readonly IEntropyPool _entropyPool;
-        private readonly IEntropyGenerator<int> _intEntropyGenerator;
+        private readonly IEntropyGeneratorRepository _entropyGeneratorRepository;
 
         public EntropyServerBackgroundService(
             IEntropyPool entropyPool,
-            IEntropyGenerator<int> intEntropyGenerator)
+            IEntropyGeneratorRepository entropyGeneratorRepository)
         {
             _entropyPool = entropyPool;
-            _intEntropyGenerator = intEntropyGenerator;
-
-            _entropyPool.AddSubPool(_intEntropyGenerator.EntropyResultType);
+            _entropyGeneratorRepository = entropyGeneratorRepository;
         }
 
-        public async Task<T> GetEntropy<T>() => await SwitchAndFetchResult<T>();
+        public async Task<T> GetEntropy<T>() => await GetEntropyInternal<T>();
 
-        public async Task<T> GetEntropy<T>(EntropyFilterDto entropyFilterDto) => await SwitchAndFetchResult<T>(entropyFilterDto);
+        public async Task<T> GetEntropy<T>(EntropyFilterDto entropyFilterDto) => await GetEntropyInternal<T>(entropyFilterDto);
 
 
-        private async Task<T> SwitchAndFetchResult<T>(EntropyFilterDto entropyFilterDto = null) => DataMappings.GetEntropyType<T>() switch 
-        {
-            EntropyType.Int => (await _intEntropyGenerator.Fetch(entropyFilterDto)) is T result ? result : default,
-            _ => default            
-        };
+        private async Task<T> GetEntropyInternal<T>(EntropyFilterDto entropyFilterDto = null) 
+        {            
+            var generator = _entropyGeneratorRepository.GetGenerator<T>();
+            if (generator != null)
+            {
+                return await generator.Fetch(entropyFilterDto);
+            }
+
+            return default;
+        } 
 
 
         public Task StartAsync(CancellationToken cancellationToken)

@@ -1,5 +1,6 @@
 ﻿using EntropyServer.Domain.Enums;
 using EntropyServer.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,6 +41,19 @@ namespace EntropyServer.Infrastructure.Repositories
                 result = EntropyType.Undefined;
                 return false;
             }
+        }
+
+        public bool ToEntropyType(Type type, out EntropyType entropyType)
+        {
+            var def = Definitions.FirstOrDefault(x => x.TypeValue.Equals(type));
+            if (def == null)
+            {
+                entropyType = EntropyType.Undefined;
+                return false;
+            }
+
+            entropyType = def.EntropyTypeValue;
+            return true;
         }
     }
 }

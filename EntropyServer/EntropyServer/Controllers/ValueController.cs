@@ -11,7 +11,7 @@ namespace EntropyServer.Controllers
         [Route("typedefinitions")]
         public async Task<IActionResult> GetTypeDefinitions()
         {
-
+            //todo
         }
     }
 }
