@@ -1,6 +1,7 @@
 using EntropyServer.Domain;
 using EntropyServer.Domain.Interfaces;
 using EntropyServer.Domain.Result;
+using EntropyServer.Domain.TypeDefinitions;
 using EntropyServer.Infrastructure.Data;
 using EntropyServer.Infrastructure.Generators;
 using EntropyServer.Infrastructure.Mappers;
@@ -28,16 +29,24 @@ namespace EntropyServer
                 }).ConfigureServices(services => 
                 {
                     services
-                    .AddSingleton<IEntropyData<int>, IntEntropyData>()                    
-                    .AddSingleton<IEntropyResult<int>, IntEntropyResult>()
-                    .AddSingleton<IEntropyServerBackgroundService, EntropyServerBackgroundService>()
+                    .AddSingleton<IEntropyData<int>, IntEntropyData>()
+
+                    .AddSingleton<IEntropyTypeDefinition<int>, IntEntropyTypeDefinition>()
+                    .AddSingleton<IEntropyTypeDefinition<float>, FloatEntropyTypeDefinition>()
+                    .AddSingleton<IEntropyTypeDefinition<string>, HashEntropyTypeDefinition>()
                     .AddSingleton<IEntropyService<int>, IntEntropyService>()
+                    .AddSingleton<IEntropyGenerator<int>, IntEntropyGenerator>()
+                    .AddSingleton<IEntropyResultService, EntropyResultService>()
+                    .AddSingleton<IEntropyServerBackgroundService, EntropyServerBackgroundService>()
                     .AddSingleton<IEntropyServiceMapper, EntropyServiceMapper>()
                     .AddSingleton<IEntropyTypeRepository, EntropyTypeRepository>()
                     .AddSingleton<IEntropyGeneratorRepository, EntropyGeneratorRepository>()
                     .AddSingleton<IHostedService, EntropyServerBackgroundService>()
-                    .AddSingleton<IEntropyGenerator<int>, IntEntropyGenerator>()
-                    .AddSingleton<IEntropyPool, EntropyPool>();
+                    .AddSingleton<IEntropyPool, EntropyPool>()
+
+                    //result types
+                    .AddScoped<IEntropyResult<int>, IntEntropyResult>()
+                    .AddScoped<IEntropyGenericResult, EntropyGenericResult>();
                 });
     }
 }

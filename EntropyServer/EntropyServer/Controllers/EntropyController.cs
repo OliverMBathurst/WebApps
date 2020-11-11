@@ -1,5 +1,4 @@
-﻿using EntropyServer.Domain.Enums;
-using EntropyServer.Domain.Interfaces;
+﻿using EntropyServer.Domain.Interfaces;
 using EntropyServer.Domain.TransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,16 +11,16 @@ namespace EntropyServer.Controllers
     public class EntropyController : ControllerBase
     {
         private readonly ILogger<EntropyController> _logger;
-        private readonly IEntropyServiceMapper _entropyServiceMapper;
+        private readonly IEntropyResultService _entropyResultService;
         private readonly IEntropyTypeRepository _entropyTypeRepository;
 
         public EntropyController(
             ILogger<EntropyController> logger,
-            IEntropyServiceMapper entropyServiceMapper,
+            IEntropyResultService entropyResultService,
             IEntropyTypeRepository entropyTypeRepository)
         {
             _logger = logger;
-            _entropyServiceMapper = entropyServiceMapper;
+            _entropyResultService = entropyResultService;
             _entropyTypeRepository = entropyTypeRepository;
         }
 
@@ -32,11 +31,13 @@ namespace EntropyServer.Controllers
             {
                 _logger.LogInformation($"Valid entropy type: {entropyType}, generating entropy.");
 
-                return entropyType switch
+                var result = await _entropyResultService.GetResult(entropyType);
+                if (result.Exception != null)
                 {
-                    EntropyType.Int => Ok(await _entropyServiceMapper.GetService<int>().GetResult()),
-                    _ => BadRequest()
-                };
+                    return StatusCode(500, result.Exception);
+                }
+
+                return Ok(result);
             }
             else
             {

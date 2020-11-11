@@ -1,6 +1,5 @@
 ﻿using EntropyServer.Domain.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EntropyServer.Infrastructure.Repositories
 {
@@ -8,18 +7,19 @@ namespace EntropyServer.Infrastructure.Repositories
     {
         private readonly IEntropyGenerator<int> _intEntropyGenerator;
 
-        public EntropyGeneratorRepository(
-            IEntropyGenerator<int> intEntropyGenerator) 
+        public EntropyGeneratorRepository(IEntropyGenerator<int> intEntropyGenerator) 
         {
             _intEntropyGenerator = intEntropyGenerator;        
         }
 
         public IEntropyGenerator<T> GetGenerator<T>()
         {
-            var generator = Generators.FirstOrDefault(x => x is IEntropyGenerator<T>);
-            if (generator != null)
+            foreach (var generator in Generators)
             {
-                return generator as IEntropyGenerator<T>;
+                if (generator is IEntropyGenerator<T> entropyGenerator)
+                {
+                    return entropyGenerator;
+                }
             }
             return null;
         }

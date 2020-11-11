@@ -1,36 +1,35 @@
-﻿using EntropyServer.Domain.Enums;
-using EntropyServer.Domain.Interfaces;
+﻿using EntropyServer.Domain.Interfaces;
+using System.Collections.Generic;
 
 namespace EntropyServer.Infrastructure.Mappers
 {
     public sealed class EntropyServiceMapper : IEntropyServiceMapper
     {
         private readonly IEntropyService<int> _intEntropyService;
-        private readonly IEntropyTypeRepository _entropyTypeRepository;
 
-        public EntropyServiceMapper(
-            IEntropyService<int> intEntropyService,
-            IEntropyTypeRepository entropyTypeRepository)
+        public EntropyServiceMapper(IEntropyService<int> intEntropyService)
         {
             _intEntropyService = intEntropyService;
-            _entropyTypeRepository = entropyTypeRepository;
         }
 
-        public IEntropyService<T> GetService<T>() 
-        { 
-            if (_entropyTypeRepository.ToEntropyType(typeof(T), out var result))
+        public IEntropyService<T> GetService<T>() => GetServiceInternal<T>();
+
+        public IEntropyService<T> GetServiceInternal<T>()
+        {
+            foreach (var service in Services)
             {
-                return GetService<T>(result);
+                if (service is IEntropyService<T> matchedService)
+                {
+                    return matchedService;
+                }
             }
 
             return null;
-        } 
+        }
 
-        public IEntropyService<T> GetService<T>(EntropyType entropyType)
-            => entropyType switch
-            {
-                EntropyType.Int => (IEntropyService<T>)_intEntropyService,
-                _ => null
-            };
+        private HashSet<object> Services => new HashSet<object>
+        {
+            _intEntropyService
+        };
     }
 }

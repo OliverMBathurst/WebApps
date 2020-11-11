@@ -1,8 +1,7 @@
 ﻿using EntropyServer.Domain.Enums;
 using EntropyServer.Domain.Interfaces;
-using System;
+using EntropyServer.Extensions;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EntropyServer.Infrastructure.Repositories
 {
@@ -22,38 +21,43 @@ namespace EntropyServer.Infrastructure.Repositories
             _hashDefinition = hashDefinition;
         }
 
-        public IEnumerable<IGenericEntropyTypeDefinition> Definitions => new HashSet<IGenericEntropyTypeDefinition> { 
-            _intDefinition.ToGenericDefinition(),
-            _floatDefinition.ToGenericDefinition(),
-            _hashDefinition.ToGenericDefinition()
-        };
-
         public bool ToEntropyType(int value, out EntropyType result)
         {
-            var type = Definitions.FirstOrDefault(x => x.NumericalValue.Equals(value));
-            if (type != null)
+            foreach (var definition in Definitions)
             {
-                result = type.EntropyTypeValue;
-                return true;
+                if (definition.CheckValue("NumericalValue", value))
+                {
+                    if (definition.GetValue<EntropyType>("EntropyTypeValue", out var entropyTypeResult))
+                    {
+                        result = entropyTypeResult;
+                        return true;
+                    }
+                }                
             }
-            else
-            {
-                result = EntropyType.Undefined;
-                return false;
-            }
+
+            result = EntropyType.Undefined;
+            return false;
         }
 
-        public bool ToEntropyType(Type type, out EntropyType entropyType)
+        public bool ToEntropyType<T>(out EntropyType entropyType)
         {
-            var def = Definitions.FirstOrDefault(x => x.TypeValue.Equals(type));
-            if (def == null)
+            foreach (var definition in Definitions)
             {
-                entropyType = EntropyType.Undefined;
-                return false;
+                if (definition is IEntropyTypeDefinition<T> entropyDefinition)
+                {
+                    entropyType = entropyDefinition.EntropyTypeValue;
+                    return true;
+                }
             }
 
-            entropyType = def.EntropyTypeValue;
-            return true;
+            entropyType = EntropyType.Undefined;
+            return false;
         }
+
+        public IEnumerable<object> Definitions => new HashSet<object> {
+            _intDefinition,
+            _floatDefinition,
+            _hashDefinition
+        };
     }
 }

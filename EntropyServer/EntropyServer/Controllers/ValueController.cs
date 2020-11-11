@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using EntropyServer.Domain.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EntropyServer.Controllers
 {
@@ -7,11 +7,19 @@ namespace EntropyServer.Controllers
     [ApiController]
     public class ValueController : ControllerBase
     {
+        private readonly IEntropyTypeRepository _entropyTypeRepository;
+
+        public ValueController(IEntropyTypeRepository entropyTypeRepository) 
+        {
+            _entropyTypeRepository = entropyTypeRepository;
+        }
+
         [HttpGet]
         [Route("typedefinitions")]
-        public async Task<IActionResult> GetTypeDefinitions()
+        public IActionResult GetTypeDefinitions()
         {
-            //todo
+            var definitions = _entropyTypeRepository.Definitions;
+            return Ok(definitions);
         }
     }
 }

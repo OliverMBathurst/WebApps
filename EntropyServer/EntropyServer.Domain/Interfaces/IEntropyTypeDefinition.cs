@@ -1,5 +1,4 @@
 ﻿using EntropyServer.Domain.Enums;
-using System;
 
 namespace EntropyServer.Domain.Interfaces
 {
@@ -11,10 +10,6 @@ namespace EntropyServer.Domain.Interfaces
 
         string TextValue { get; }
 
-        Type TypeValue { get; }
-
         T DefaultValue { get; }
-
-        IGenericEntropyTypeDefinition ToGenericDefinition();
     }
 }
