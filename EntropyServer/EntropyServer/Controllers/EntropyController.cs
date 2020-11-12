@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EntropyServer.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class EntropyController : ControllerBase
     {
         private readonly ILogger<EntropyController> _logger;

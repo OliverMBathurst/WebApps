@@ -4,10 +4,12 @@ namespace EntropyServer.Domain.Interfaces
 {
     public interface IEntropyGenericResult
     {
-        public bool Success { get; set; }
+        bool Success { get; set; }
 
-        public object Value { get; set; }
+        object Value { get; set; }
 
-        public Exception Exception { get; set; }
+        DateTime Time { get; set; }
+
+        Exception Exception { get; set; }
     }
 }

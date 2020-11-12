@@ -16,10 +16,6 @@ namespace EntropyServer.Controllers
 
         [HttpGet]
         [Route("typedefinitions")]
-        public IActionResult GetTypeDefinitions()
-        {
-            var definitions = _entropyTypeRepository.Definitions;
-            return Ok(definitions);
-        }
+        public IActionResult GetTypeDefinitions() => Ok(_entropyTypeRepository.Definitions);
     }
 }

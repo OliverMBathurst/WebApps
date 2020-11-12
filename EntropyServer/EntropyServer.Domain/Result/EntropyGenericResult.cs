@@ -9,6 +9,8 @@ namespace EntropyServer.Domain.Result
 
         public object Value { get; set; }
 
+        public DateTime Time { get; set; }
+
         public Exception Exception { get; set; }
     }
 }

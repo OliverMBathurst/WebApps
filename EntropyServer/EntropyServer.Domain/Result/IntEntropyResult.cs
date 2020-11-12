@@ -11,11 +11,14 @@ namespace EntropyServer.Domain.Result
 
         public Exception Exception { get; set; }
 
+        public DateTime Time => DateTime.Now;
+
         public IEntropyGenericResult ToGenericForm() => new EntropyGenericResult
         {
             Success = Success,
             Value = Value,
-            Exception = Exception
+            Exception = Exception,
+            Time = Time
         };
     }
 }

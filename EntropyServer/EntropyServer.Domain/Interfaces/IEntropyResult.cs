@@ -8,6 +8,8 @@ namespace EntropyServer.Domain.Interfaces
 
         T Value { get; set; }
 
+        DateTime Time { get; }
+
         Exception Exception { get; set; }
 
         IEntropyGenericResult ToGenericForm();
