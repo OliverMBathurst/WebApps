@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ResponseComponent from './ResponseComponent';
+import Response from './Response'
 import { GetEntropyResultEndpoint, GetTypeDefinitionsEndpoint } from './Functions'
 
 export class Home extends Component {
@@ -40,7 +40,7 @@ export class Home extends Component {
 
                 <button className="btn btn-primary" onClick={this.fetchEntropy}>Fetch</button>
                 
-                {this.state.responses.map((x, idx) => <ResponseComponent key={idx} response={x} />)}
+                {this.state.responses.map((x, idx) => <Response key={idx} response={x} />)}
             </div>
         );
     }

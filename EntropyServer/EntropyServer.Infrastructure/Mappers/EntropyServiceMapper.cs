@@ -1,4 +1,5 @@
 ﻿using EntropyServer.Domain.Interfaces;
+using EntropyServer.Extensions;
 using System.Collections.Generic;
 
 namespace EntropyServer.Infrastructure.Mappers
@@ -12,20 +13,9 @@ namespace EntropyServer.Infrastructure.Mappers
             _intEntropyService = intEntropyService;
         }
 
-        public IEntropyService<T> GetService<T>() => GetServiceInternal<T>();
+        public IEntropyService<T> GetService<T>() => Services.GetFirstOfTypeOrDefault<IEntropyService<T>>();
 
-        public IEntropyService<T> GetServiceInternal<T>()
-        {
-            foreach (var service in Services)
-            {
-                if (service is IEntropyService<T> matchedService)
-                {
-                    return matchedService;
-                }
-            }
-
-            return null;
-        }
+        public bool HasService<T>() => Services.GetFirstOfTypeOrDefault<IEntropyService<T>>() != null;
 
         private HashSet<object> Services => new HashSet<object>
         {
