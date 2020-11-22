@@ -3,6 +3,7 @@ using EntropyServer.Domain.Result;
 using EntropyServer.Domain.TransferObjects;
 using EntropyServer.Infrastructure.Exceptions;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EntropyServer.Infrastructure.Data
@@ -15,25 +16,33 @@ namespace EntropyServer.Infrastructure.Data
         public IntEntropyData(
             IEntropyServerBackgroundService entropyBackgroundService,
             ILogger<IntEntropyData> logger)
-        { 
+        {
             _entropyBackgroundService = entropyBackgroundService;
             _logger = logger;
         }
 
-        public async Task<IEntropyResult<int>> GetResult()
+        public async Task<IEntropyResult<int>> GetResult(EntropyFilterDto entropyFilterDto = null)
         {
             var result = 0;
             var success = true;
             try
             {
-                result = await _entropyBackgroundService.GetEntropy<int>();
+                var validationErrors = ValidateFilterDto(entropyFilterDto);
+                if (validationErrors.Count == 0)
+                {
+                    result = await _entropyBackgroundService.GetEntropy<int>(entropyFilterDto);
+                }
+                else
+                {
+                    //throw invalid filter exception
+                }
             }
             catch (EntropyNotGeneratedException ex)
             {
                 _logger.LogError($"Could not generate entropy: {ex.Message}");
                 success = false;
             }
-            
+
             return new IntEntropyResult
             {
                 Success = success,
@@ -41,25 +50,15 @@ namespace EntropyServer.Infrastructure.Data
             };
         }
 
-        public async Task<IEntropyResult<int>> GetResult(EntropyFilterDto entropyFilterDto)
+        private Dictionary<string, string> ValidateFilterDto(EntropyFilterDto entropyFilterDto)
         {
-            var result = 0;
-            var success = true;
-            try
+            var errors = new Dictionary<string, string>();
+            if (entropyFilterDto == null)
             {
-                result = await _entropyBackgroundService.GetEntropy<int>(entropyFilterDto);
-            }
-            catch(EntropyNotGeneratedException ex)
-            {
-                _logger.LogError($"Could not generate entropy: {ex.Message}");
-                success = false;
+                return errors;
             }
 
-            return new IntEntropyResult
-            {
-                Success = success,
-                Value = result
-            };
+            return errors;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EntropyServer.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace EntropyServer.Controllers
 {
@@ -7,15 +8,16 @@ namespace EntropyServer.Controllers
     [ApiController]
     public class ValueController : ControllerBase
     {
-        private readonly IEntropyTypeRepository _entropyTypeRepository;
+        private readonly IEntropyConfigurationMapper _entropyConfigurationMapper;
 
-        public ValueController(IEntropyTypeRepository entropyTypeRepository) 
+        public ValueController(IEntropyConfigurationMapper entropyConfigurationMapper)
         {
-            _entropyTypeRepository = entropyTypeRepository;
+            _entropyConfigurationMapper = entropyConfigurationMapper;
         }
+
 
         [HttpGet]
         [Route("typedefinitions")]
-        public IActionResult GetTypeDefinitions() => Ok(_entropyTypeRepository.Definitions);
+        public IActionResult GetTypeDefinitions() => Ok(new List<object> { _entropyConfigurationMapper.GetConfiguration<int>() });
     }
 }

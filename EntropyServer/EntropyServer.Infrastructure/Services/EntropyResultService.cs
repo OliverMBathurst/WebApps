@@ -1,30 +1,19 @@
-﻿using EntropyServer.Domain.Enums;
-using EntropyServer.Domain.Interfaces;
+﻿using EntropyServer.Domain.Interfaces;
+using EntropyServer.Domain.TransferObjects;
 using System.Threading.Tasks;
 
 namespace EntropyServer.Infrastructure.Services
 {
     public sealed class EntropyResultService : IEntropyResultService
     {
-        private readonly IEntropyServiceMapper _entropyServiceMapper;
+        private readonly IEntropyConfigurationMapper _entropyConfigurationMapper;
 
-        public EntropyResultService(IEntropyServiceMapper entropyServiceMapper)
-        {
-            _entropyServiceMapper = entropyServiceMapper;
-        }
+        public EntropyResultService(IEntropyConfigurationMapper entropyConfigurationMapper) => _entropyConfigurationMapper = entropyConfigurationMapper;
 
-        public async Task<IEntropyGenericResult> GetResult(EntropyType entropyType)
-        {
-            IEntropyGenericResult result = null;
-
-            switch (entropyType)
-            {
-                case EntropyType.Int:
-                    result = (await _entropyServiceMapper.GetService<int>().GetResult()).ToGenericForm();
-                    break;
-            }
-
-            return result;
-        }
+        public async Task<IEntropyResult<T>> GetResult<T>(EntropyFilterDto entropyFilterDto)
+            => await _entropyConfigurationMapper
+                    .GetConfiguration<T>()
+                    .Service
+                    .GetResult();
     }
 }

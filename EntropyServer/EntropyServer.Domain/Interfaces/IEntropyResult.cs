@@ -11,7 +11,5 @@ namespace EntropyServer.Domain.Interfaces
         DateTime Time { get; }
 
         Exception Exception { get; set; }
-
-        IEntropyGenericResult ToGenericForm();
     }
 }

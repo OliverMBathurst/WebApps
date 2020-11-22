@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace EntropyServer.Extensions
 {
@@ -9,11 +8,9 @@ namespace EntropyServer.Extensions
 
         public static bool GetValue<T>(this object obj, string propertyName, out T value)
         {
-            var propertyResult = obj.GetType().GetProperties().FirstOrDefault(x => x.Name.Equals(propertyName));
-            if (propertyResult != null)
+            if (obj.GetType().GetProperties().Find(x => x.Name.Equals(propertyName), out var propertyResult) && propertyResult != null)
             {
-                var propertyValue = propertyResult.GetValue(obj);
-                if (propertyValue is T targetTypeResult)
+                if (propertyResult.GetValue(obj) is T targetTypeResult)
                 {
                     value = targetTypeResult;
                     return true;
@@ -26,11 +23,9 @@ namespace EntropyServer.Extensions
 
         public static bool GetValue<T>(this PropertyInfo[] props, object targetObject, string propertyName, out T value)
         {
-            var propertyResult = props.FirstOrDefault(x => x.Name.Equals(propertyName));
-            if (propertyResult != null)
+            if (props.Find(x => x.Name.Equals(propertyName), out var propertyResult) && propertyResult != null)
             {
-                var propertyValue = propertyResult.GetValue(targetObject);
-                if (propertyValue is T targetTypeResult)
+                if (propertyResult.GetValue(targetObject) is T targetTypeResult)
                 {
                     value = targetTypeResult;
                     return true;
@@ -43,8 +38,7 @@ namespace EntropyServer.Extensions
 
         public static bool CheckValue<T>(this PropertyInfo[] props, object targetObject, string propertyName, T expectedValue)
         {
-            var prop = props.FirstOrDefault(x => x.Name.Equals(propertyName));
-            if (prop != null)
+            if (props.Find(x => x.Name.Equals(propertyName), out var prop) && prop != null)
             {
                 var properyValue = prop.GetValue(targetObject);
                 return properyValue is T comparisonValue && comparisonValue.Equals(expectedValue);

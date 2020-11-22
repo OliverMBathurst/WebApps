@@ -6,4 +6,3 @@ C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp3.1\EntropyServer.Extensions.csproj.CoreCompileInputs.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp3.1\EntropyServer.Extensions.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp3.1\EntropyServer.Extensions.pdb
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp3.1\EntropyServer.Extensions.csprojAssemblyReference.cache

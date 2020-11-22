@@ -9,14 +9,14 @@ namespace EntropyServer.Infrastructure.Services
     public sealed class EntropyServerBackgroundService : IHostedService, IEntropyServerBackgroundService
     {
         private readonly IEntropyPool _entropyPool;
-        private readonly IEntropyGeneratorRepository _entropyGeneratorRepository;
+        private readonly IEntropyConfigurationMapper _entropyConfigurationMapper;
 
         public EntropyServerBackgroundService(
             IEntropyPool entropyPool,
-            IEntropyGeneratorRepository entropyGeneratorRepository)
+            IEntropyConfigurationMapper entropyGeneratorRepository)
         {
             _entropyPool = entropyPool;
-            _entropyGeneratorRepository = entropyGeneratorRepository;
+            _entropyConfigurationMapper = entropyGeneratorRepository;
         }
 
         public async Task<T> GetEntropy<T>() => await GetEntropyInternal<T>();
@@ -24,16 +24,16 @@ namespace EntropyServer.Infrastructure.Services
         public async Task<T> GetEntropy<T>(EntropyFilterDto entropyFilterDto) => await GetEntropyInternal<T>(entropyFilterDto);
 
 
-        private async Task<T> GetEntropyInternal<T>(EntropyFilterDto entropyFilterDto = null) 
-        {            
-            var generator = _entropyGeneratorRepository.GetGenerator<T>();
+        private async Task<T> GetEntropyInternal<T>(EntropyFilterDto entropyFilterDto = null)
+        {
+            var generator = _entropyConfigurationMapper.GetConfiguration<T>().Generator;
             if (generator != null)
             {
                 return await generator.Fetch(entropyFilterDto);
             }
 
             return default;
-        } 
+        }
 
 
         public Task StartAsync(CancellationToken cancellationToken)

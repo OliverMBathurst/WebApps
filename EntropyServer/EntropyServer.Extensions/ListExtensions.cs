@@ -8,6 +8,6 @@ namespace EntropyServer.Extensions
         {
             list.Add(addition);
             return list;
-        } 
+        }
     }
 }

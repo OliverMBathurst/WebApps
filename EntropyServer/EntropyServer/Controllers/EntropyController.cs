@@ -1,5 +1,7 @@
-﻿using EntropyServer.Domain.Interfaces;
+﻿using EntropyServer.Domain.Enums;
+using EntropyServer.Domain.Interfaces;
 using EntropyServer.Domain.TransferObjects;
+using EntropyServer.Infrastructure.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
@@ -12,38 +14,44 @@ namespace EntropyServer.Controllers
     {
         private readonly ILogger<EntropyController> _logger;
         private readonly IEntropyResultService _entropyResultService;
-        private readonly IEntropyTypeRepository _entropyTypeRepository;
 
         public EntropyController(
             ILogger<EntropyController> logger,
-            IEntropyResultService entropyResultService,
-            IEntropyTypeRepository entropyTypeRepository)
+            IEntropyResultService entropyResultService)
         {
             _logger = logger;
             _entropyResultService = entropyResultService;
-            _entropyTypeRepository = entropyTypeRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetEntropyResult([FromQuery] EntropyFilterDto entropyFilterDto)
         {
-            if (_entropyTypeRepository.ToEntropyType(entropyFilterDto.EntropyTypeID, out var entropyType))
+            var entropyType = DataMappings.ToEntropyType(entropyFilterDto.EntropyTypeID);
+            if (entropyType != EntropyType.Undefined)
             {
                 _logger.LogInformation($"Valid entropy type: {entropyType}, generating entropy.");
 
-                var result = await _entropyResultService.GetResult(entropyType);
-                if (result.Exception != null)
+                return entropyType switch
                 {
-                    return StatusCode(500, result.Exception);
-                }
-
-                return Ok(result);
+                    EntropyType.Int => GetActionResultInternal(await _entropyResultService.GetResult<int>(entropyFilterDto)),
+                    _ => NotFound()
+                };
             }
             else
             {
                 _logger.LogError($"Invalid entropy type ID: {entropyFilterDto.EntropyTypeID}.");
                 return BadRequest();
             }
+        }
+
+        private IActionResult GetActionResultInternal<T>(IEntropyResult<T> result)
+        {
+            if (result.Exception != null)
+            {
+                return StatusCode(500, result.Exception);
+            }
+
+            return Ok(result);
         }
     }
 }
