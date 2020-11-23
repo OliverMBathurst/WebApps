@@ -1,6 +1,6 @@
 ﻿namespace EntropyServer.Domain.Interfaces
 {
-    public interface IEntropyConfigurationMapper
+    public interface IEntropyTypeConfigurationMapper
     {
         IEntropyTypeDefinitionConfiguration<int> IntegerConfiguration { get; }
 

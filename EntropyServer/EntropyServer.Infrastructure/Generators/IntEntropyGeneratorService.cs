@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntropyServer.Infrastructure.Generators
 {
-    public class IntEntropyGenerator : IEntropyGenerator<int>
+    public class IntEntropyGeneratorService : IEntropyTypeGeneratorService<int>
     {
         public EntropyType EntropyResultType => EntropyType.Int;
 

@@ -5,17 +5,13 @@ using System;
 
 namespace EntropyServer.Infrastructure.Mappers
 {
-    public sealed class EntropyConfigurationMapper : IEntropyConfigurationMapper
+    public sealed class EntropyTypeConfigurationMapper : IEntropyTypeConfigurationMapper
     {
-        private readonly IEntropyService<int> _intEntropyService;
-        private readonly IEntropyGenerator<int> _intEntropyGenerator;
+        private readonly IEntropyTypeServiceRepository<int> _intEntropyTypeServiceRepository;
 
-        public EntropyConfigurationMapper(
-            IEntropyService<int> intEntropyService,
-            IEntropyGenerator<int> intEntropyGenerator)
+        public EntropyTypeConfigurationMapper(IEntropyTypeServiceRepository<int> intEntropyTypeServiceRepository)
         {
-            _intEntropyService = intEntropyService;
-            _intEntropyGenerator = intEntropyGenerator;
+            _intEntropyTypeServiceRepository = intEntropyTypeServiceRepository;
 
              SetupConfigurations();
         }
@@ -27,20 +23,27 @@ namespace EntropyServer.Infrastructure.Mappers
         public IEntropyTypeDefinitionConfiguration<string> HashConfiguration { get; private set; }
 
         public IEntropyTypeDefinitionConfiguration<T> GetConfiguration<T>()
-            => (IEntropyTypeDefinitionConfiguration<T>) Array.Find(typeof(EntropyConfigurationMapper)
-            .GetProperties(), x => x.PropertyType == typeof(IEntropyTypeDefinitionConfiguration<T>))
-            .GetValue(this);
+        {
+            var prop = Array.Find(typeof(EntropyTypeConfigurationMapper).GetProperties(), x => x.PropertyType.Equals(typeof(IEntropyTypeDefinitionConfiguration<T>)));
+            if (prop == null)
+            {
+                //throw a more specific exception here
+                throw new Exception();
+            }
+
+
+            return (IEntropyTypeDefinitionConfiguration<T>)prop.GetValue(this);
+        }
 
         private void SetupConfigurations()
         {
             IntegerConfiguration = new EntropyTypeDefinitionBuilder<int>(
-                _intEntropyService,
-                _intEntropyGenerator)
+                _intEntropyTypeServiceRepository)
                 .SetDefaultValue(-1)
                 .SetEntropyType(EntropyType.Int)
                 .SetNumericValue((int)EntropyType.Int)
                 .SetTextValue("Integer")
-                .Result;
+                .Configuration;
         }
     }
 }

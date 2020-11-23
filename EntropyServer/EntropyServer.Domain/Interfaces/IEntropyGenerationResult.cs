@@ -2,7 +2,7 @@
 
 namespace EntropyServer.Domain.Interfaces
 {
-    public interface IEntropyResult<T>
+    public interface IEntropyGenerationResult<T>
     {
         bool Success { get; set; }
 

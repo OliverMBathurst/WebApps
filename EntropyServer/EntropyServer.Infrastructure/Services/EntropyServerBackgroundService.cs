@@ -9,11 +9,11 @@ namespace EntropyServer.Infrastructure.Services
     public sealed class EntropyServerBackgroundService : IHostedService, IEntropyServerBackgroundService
     {
         private readonly IEntropyPool _entropyPool;
-        private readonly IEntropyConfigurationMapper _entropyConfigurationMapper;
+        private readonly IEntropyTypeConfigurationMapper _entropyConfigurationMapper;
 
         public EntropyServerBackgroundService(
             IEntropyPool entropyPool,
-            IEntropyConfigurationMapper entropyGeneratorRepository)
+            IEntropyTypeConfigurationMapper entropyGeneratorRepository)
         {
             _entropyPool = entropyPool;
             _entropyConfigurationMapper = entropyGeneratorRepository;
@@ -26,7 +26,7 @@ namespace EntropyServer.Infrastructure.Services
 
         private async Task<T> GetEntropyInternal<T>(EntropyFilterDto entropyFilterDto = null)
         {
-            var generator = _entropyConfigurationMapper.GetConfiguration<T>().Generator;
+            var generator = _entropyConfigurationMapper.GetConfiguration<T>().GeneratorService;
             if (generator != null)
             {
                 return await generator.Fetch(entropyFilterDto);

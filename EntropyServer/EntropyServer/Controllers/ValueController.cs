@@ -8,9 +8,9 @@ namespace EntropyServer.Controllers
     [ApiController]
     public class ValueController : ControllerBase
     {
-        private readonly IEntropyConfigurationMapper _entropyConfigurationMapper;
+        private readonly IEntropyTypeConfigurationMapper _entropyConfigurationMapper;
 
-        public ValueController(IEntropyConfigurationMapper entropyConfigurationMapper)
+        public ValueController(IEntropyTypeConfigurationMapper entropyConfigurationMapper)
         {
             _entropyConfigurationMapper = entropyConfigurationMapper;
         }

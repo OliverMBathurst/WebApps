@@ -6,44 +6,35 @@ namespace EntropyServer.Infrastructure.Builders
 {
     public sealed class EntropyTypeDefinitionBuilder<T> : IEntropyTypeDefinitionBuilder<T>
     {
-        private IEntropyTypeDefinitionConfiguration<T> _config = new EntropyTypeDefinitionConfiguration<T>();
-
-        public EntropyTypeDefinitionBuilder(
-            IEntropyService<T> service,
-            IEntropyGenerator<T> generator)
+        public EntropyTypeDefinitionBuilder(IEntropyTypeServiceRepository<T> entropyTypeServiceRepository)
         {
-            _config.Service = service;
-            _config.Generator = generator;
-        }
-
-        public IEntropyTypeDefinitionBuilder<T> ResetState() {
-            _config = new EntropyTypeDefinitionConfiguration<T>();
-            return this;
+            Configuration.GeneratorService = entropyTypeServiceRepository.GeneratorService;
+            Configuration.ResultService = entropyTypeServiceRepository.ResultService;
         }
 
         public IEntropyTypeDefinitionBuilder<T> SetTextValue(string value) {
-            _config.TextValue = value;
+            Configuration.TextValue = value;
             return this;
         }
 
         public IEntropyTypeDefinitionBuilder<T> SetNumericValue(int value)
         {
-            _config.NumericValue = value;
+            Configuration.NumericValue = value;
             return this;
         }
 
         public IEntropyTypeDefinitionBuilder<T> SetDefaultValue(T value)
         {
-            _config.DefaultValue = value;
+            Configuration.DefaultValue = value;
             return this;
         }
 
         public IEntropyTypeDefinitionBuilder<T> SetEntropyType(EntropyType value)
         {
-            _config.EntropyType = value;
+            Configuration.EntropyType = value;
             return this;
         }
 
-        public IEntropyTypeDefinitionConfiguration<T> Result => _config;
+        public IEntropyTypeDefinitionConfiguration<T> Configuration { get; } = new EntropyTypeDefinitionConfiguration<T>();
     }
 }

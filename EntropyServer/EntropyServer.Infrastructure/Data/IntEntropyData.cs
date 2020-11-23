@@ -21,7 +21,7 @@ namespace EntropyServer.Infrastructure.Data
             _logger = logger;
         }
 
-        public async Task<IEntropyResult<int>> GetResult(EntropyFilterDto entropyFilterDto = null)
+        public async Task<IEntropyGenerationResult<int>> GetResult(EntropyFilterDto entropyFilterDto = null)
         {
             var result = 0;
             var success = true;
@@ -43,7 +43,7 @@ namespace EntropyServer.Infrastructure.Data
                 success = false;
             }
 
-            return new IntEntropyResult
+            return new IntEntropyGenerationResult
             {
                 Success = success,
                 Value = result

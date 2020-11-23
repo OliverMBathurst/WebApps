@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EntropyServer.Domain.Interfaces
 {
-    public interface IEntropyGenerator<T>
+    public interface IEntropyTypeGeneratorService<T>
     {
         EntropyType EntropyResultType { get; }
 

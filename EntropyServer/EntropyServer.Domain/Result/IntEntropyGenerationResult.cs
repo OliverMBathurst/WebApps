@@ -3,7 +3,7 @@ using System;
 
 namespace EntropyServer.Domain.Result
 {
-    public sealed class IntEntropyResult : IEntropyResult<int>
+    public sealed class IntEntropyGenerationResult : IEntropyGenerationResult<int>
     {
         public bool Success { get; set; }
 

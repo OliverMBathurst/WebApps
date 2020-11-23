@@ -1,5 +1,6 @@
 using EntropyServer.Domain;
 using EntropyServer.Domain.Interfaces;
+using EntropyServer.Domain.Repositories;
 using EntropyServer.Domain.Result;
 using EntropyServer.Infrastructure.Data;
 using EntropyServer.Infrastructure.Generators;
@@ -27,17 +28,21 @@ namespace EntropyServer
                 }).ConfigureServices(services =>
                 {
                     services.AddSingleton<IEntropyData<int>, IntEntropyData>()
-                    .AddSingleton<IEntropyService<int>, IntEntropyService>()
-                    .AddSingleton<IEntropyGenerator<int>, IntEntropyGenerator>()
-                    .AddSingleton<IEntropyResultService, EntropyResultService>()
+
+                    .AddSingleton<IEntropyTypeResultService<int>, IntEntropyTypeResultService>()
+                    .AddSingleton<IEntropyTypeGeneratorService<int>, IntEntropyGeneratorService>()
+
+                    .AddSingleton<IEntropyTypeServiceRepository<int>, IntEntropyTypeServiceRepository>()
+
+
                     .AddSingleton<IEntropyServerBackgroundService, EntropyServerBackgroundService>()
                     .AddSingleton<IHostedService, EntropyServerBackgroundService>()
                     .AddSingleton<IEntropyPool, EntropyPool>()
-                    .AddSingleton<IEntropyConfigurationMapper, EntropyConfigurationMapper>()
-
+                    .AddSingleton<IEntropyTypeConfigurationMapper, EntropyTypeConfigurationMapper>()
+                    .AddSingleton<IEntropyResultService, EntropyResultService>()
 
                     //result types
-                    .AddScoped<IEntropyResult<int>, IntEntropyResult>();
+                    .AddScoped<IEntropyGenerationResult<int>, IntEntropyGenerationResult>();
                 });
     }
 }

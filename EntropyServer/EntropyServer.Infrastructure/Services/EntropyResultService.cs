@@ -6,14 +6,15 @@ namespace EntropyServer.Infrastructure.Services
 {
     public sealed class EntropyResultService : IEntropyResultService
     {
-        private readonly IEntropyConfigurationMapper _entropyConfigurationMapper;
+        private readonly IEntropyTypeConfigurationMapper _entropyConfigurationMapper;
 
-        public EntropyResultService(IEntropyConfigurationMapper entropyConfigurationMapper) => _entropyConfigurationMapper = entropyConfigurationMapper;
+        public EntropyResultService(IEntropyTypeConfigurationMapper entropyConfigurationMapper) => _entropyConfigurationMapper = entropyConfigurationMapper;
 
-        public async Task<IEntropyResult<T>> GetResult<T>(EntropyFilterDto entropyFilterDto)
-            => await _entropyConfigurationMapper
-                    .GetConfiguration<T>()
-                    .Service
-                    .GetResult();
+        public async Task<IEntropyGenerationResult<T>> GetResult<T>(EntropyFilterDto entropyFilterDto)
+        {
+            var config = _entropyConfigurationMapper.GetConfiguration<T>();
+            var resultService = config.ResultService;
+            return await resultService.GetResult();
+        }
     }
 }

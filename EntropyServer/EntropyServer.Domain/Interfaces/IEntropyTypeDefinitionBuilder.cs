@@ -4,8 +4,6 @@ namespace EntropyServer.Domain.Interfaces
 {
     public interface IEntropyTypeDefinitionBuilder<T>
     {
-        IEntropyTypeDefinitionBuilder<T> ResetState();
-
         IEntropyTypeDefinitionBuilder<T> SetTextValue(string value);
 
         IEntropyTypeDefinitionBuilder<T> SetNumericValue(int value);
@@ -14,6 +12,6 @@ namespace EntropyServer.Domain.Interfaces
 
         IEntropyTypeDefinitionBuilder<T> SetEntropyType(EntropyType value);
 
-        IEntropyTypeDefinitionConfiguration<T> Result { get; }
+        IEntropyTypeDefinitionConfiguration<T> Configuration { get; }
     }
 }

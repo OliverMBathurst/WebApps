@@ -5,6 +5,6 @@ namespace EntropyServer.Domain.Interfaces
 {
     public interface IEntropyResultService
     {
-        Task<IEntropyResult<T>> GetResult<T>(EntropyFilterDto entropyFilterDto);
+        Task<IEntropyGenerationResult<T>> GetResult<T>(EntropyFilterDto entropyFilterDto);
     }
 }

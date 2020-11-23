@@ -44,7 +44,7 @@ namespace EntropyServer.Controllers
             }
         }
 
-        private IActionResult GetActionResultInternal<T>(IEntropyResult<T> result)
+        private IActionResult GetActionResultInternal<T>(IEntropyGenerationResult<T> result)
         {
             if (result.Exception != null)
             {
