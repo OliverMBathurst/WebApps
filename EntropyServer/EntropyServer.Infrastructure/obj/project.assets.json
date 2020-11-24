@@ -72,7 +72,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "EntropyServer.Extensions": "1.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "3.1.9"
         },
         "compile": {
@@ -80,16 +79,6 @@
         },
         "runtime": {
           "bin/placeholder/EntropyServer.Domain.dll": {}
-        }
-      },
-      "EntropyServer.Extensions/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/EntropyServer.Extensions.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EntropyServer.Extensions.dll": {}
         }
       }
     }
@@ -191,11 +180,6 @@
       "type": "project",
       "path": "../EntropyServer.Domain/EntropyServer.Domain.csproj",
       "msbuildProject": "../EntropyServer.Domain/EntropyServer.Domain.csproj"
-    },
-    "EntropyServer.Extensions/1.0.0": {
-      "type": "project",
-      "path": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj",
-      "msbuildProject": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj"
     }
   },
   "projectFileDependencyGroups": {

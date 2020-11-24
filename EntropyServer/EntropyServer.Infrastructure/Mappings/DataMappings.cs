@@ -1,7 +1,7 @@
 ﻿using EntropyServer.Domain.Enums;
 using System.Collections.Generic;
 
-namespace EntropyServer.Infrastructure.Mappers
+namespace EntropyServer.Infrastructure.Mappings
 {
     public static class DataMappings
     {

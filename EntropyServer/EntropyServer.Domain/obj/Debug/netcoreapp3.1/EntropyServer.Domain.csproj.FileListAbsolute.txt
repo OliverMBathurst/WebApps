@@ -1,12 +1,9 @@
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\bin\Debug\netcoreapp3.1\EntropyServer.Domain.deps.json
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\bin\Debug\netcoreapp3.1\EntropyServer.Domain.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\bin\Debug\netcoreapp3.1\EntropyServer.Domain.pdb
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\bin\Debug\netcoreapp3.1\EntropyServer.Extensions.dll
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\bin\Debug\netcoreapp3.1\EntropyServer.Extensions.pdb
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.csprojAssemblyReference.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.AssemblyInfoInputs.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.AssemblyInfo.cs
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.csproj.CoreCompileInputs.cache
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.csproj.CopyComplete
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.pdb
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Domain\obj\Debug\netcoreapp3.1\EntropyServer.Domain.csprojAssemblyReference.cache

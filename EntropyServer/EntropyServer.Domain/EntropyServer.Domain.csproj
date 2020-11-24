@@ -8,8 +8,4 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.9" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\EntropyServer.Extensions\EntropyServer.Extensions.csproj" />
-  </ItemGroup>
-
 </Project>

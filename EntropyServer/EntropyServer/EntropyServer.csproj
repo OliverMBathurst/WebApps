@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EntropyServer.Domain\EntropyServer.Domain.csproj" />
     <ProjectReference Include="..\EntropyServer.Infrastructure\EntropyServer.Infrastructure.csproj" />
   </ItemGroup>

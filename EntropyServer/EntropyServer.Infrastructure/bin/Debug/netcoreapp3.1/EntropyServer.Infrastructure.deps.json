@@ -77,16 +77,10 @@
       },
       "EntropyServer.Domain/1.0.0": {
         "dependencies": {
-          "EntropyServer.Extensions": "1.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "3.1.9"
         },
         "runtime": {
           "EntropyServer.Domain.dll": {}
-        }
-      },
-      "EntropyServer.Extensions/1.0.0": {
-        "runtime": {
-          "EntropyServer.Extensions.dll": {}
         }
       }
     }
@@ -140,11 +134,6 @@
       "hashPath": "microsoft.extensions.primitives.3.1.9.nupkg.sha512"
     },
     "EntropyServer.Domain/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "EntropyServer.Extensions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

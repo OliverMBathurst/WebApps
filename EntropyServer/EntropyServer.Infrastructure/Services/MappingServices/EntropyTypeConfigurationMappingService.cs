@@ -3,15 +3,19 @@ using EntropyServer.Domain.Interfaces;
 using EntropyServer.Infrastructure.Builders;
 using System;
 
-namespace EntropyServer.Infrastructure.Mappers
+namespace EntropyServer.Infrastructure.Services.MappingServices
 {
-    public sealed class EntropyTypeConfigurationMapper : IEntropyTypeConfigurationMapper
+    public sealed class EntropyTypeConfigurationMappingService : IEntropyTypeConfigurationMappingService
     {
-        private readonly IEntropyTypeServiceRepository<int> _intEntropyTypeServiceRepository;
+        private readonly IEntropyGeneratorService<int> _intEntropyGeneratorService;
+        private readonly IEntropyResultService<int> _intEntropyResultService;
 
-        public EntropyTypeConfigurationMapper(IEntropyTypeServiceRepository<int> intEntropyTypeServiceRepository)
+        public EntropyTypeConfigurationMappingService(
+            IEntropyGeneratorService<int> intEntropyGeneratorService,
+            IEntropyResultService<int> intEntropyResultService)
         {
-            _intEntropyTypeServiceRepository = intEntropyTypeServiceRepository;
+            _intEntropyGeneratorService = intEntropyGeneratorService;
+            _intEntropyResultService = intEntropyResultService;
 
              SetupConfigurations();
         }
@@ -24,7 +28,7 @@ namespace EntropyServer.Infrastructure.Mappers
 
         public IEntropyTypeDefinitionConfiguration<T> GetConfiguration<T>()
         {
-            var prop = Array.Find(typeof(EntropyTypeConfigurationMapper).GetProperties(), x => x.PropertyType.Equals(typeof(IEntropyTypeDefinitionConfiguration<T>)));
+            var prop = Array.Find(typeof(EntropyTypeConfigurationMappingService).GetProperties(), x => x.PropertyType.Equals(typeof(IEntropyTypeDefinitionConfiguration<T>)));
             if (prop == null)
             {
                 //throw a more specific exception here
@@ -37,8 +41,7 @@ namespace EntropyServer.Infrastructure.Mappers
 
         private void SetupConfigurations()
         {
-            IntegerConfiguration = new EntropyTypeDefinitionBuilder<int>(
-                _intEntropyTypeServiceRepository)
+            IntegerConfiguration = new EntropyTypeDefinitionBuilder<int>(_intEntropyGeneratorService, _intEntropyResultService)
                 .SetDefaultValue(-1)
                 .SetEntropyType(EntropyType.Int)
                 .SetNumericValue((int)EntropyType.Int)

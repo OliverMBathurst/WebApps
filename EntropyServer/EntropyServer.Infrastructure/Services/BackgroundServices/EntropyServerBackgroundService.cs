@@ -1,38 +1,37 @@
 ﻿using EntropyServer.Domain.Interfaces;
-using EntropyServer.Domain.TransferObjects;
 using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EntropyServer.Infrastructure.Services
+namespace EntropyServer.Infrastructure.Services.BackgroundServices
 {
     public sealed class EntropyServerBackgroundService : IHostedService, IEntropyServerBackgroundService
     {
-        private readonly IEntropyPool _entropyPool;
-        private readonly IEntropyTypeConfigurationMapper _entropyConfigurationMapper;
+        private readonly IEntropyPool<int> _intEntropyPool;
+        private readonly IEntropyTypeConfigurationMappingService _entropyConfigurationMapper;
 
         public EntropyServerBackgroundService(
-            IEntropyPool entropyPool,
-            IEntropyTypeConfigurationMapper entropyGeneratorRepository)
+            IEntropyPool<int> intEntropyPool,
+            IEntropyTypeConfigurationMappingService entropyGeneratorRepository)
         {
-            _entropyPool = entropyPool;
+            _intEntropyPool = intEntropyPool;
             _entropyConfigurationMapper = entropyGeneratorRepository;
         }
 
-        public async Task<T> GetEntropy<T>() => await GetEntropyInternal<T>();
+        public async Task<IEntropyGenerationResult<T>> GetEntropy<T>() => await GetEntropyInternal<T>();
 
-        public async Task<T> GetEntropy<T>(EntropyFilterDto entropyFilterDto) => await GetEntropyInternal<T>(entropyFilterDto);
+        public async Task<IEntropyGenerationResult<T>> GetEntropy<T>(IEntropyFilter entropyFilter) => await GetEntropyInternal<T>(entropyFilter);
 
 
-        private async Task<T> GetEntropyInternal<T>(EntropyFilterDto entropyFilterDto = null)
+        private async Task<IEntropyGenerationResult<T>> GetEntropyInternal<T>(IEntropyFilter entropyFilter = null)
         {
             var generator = _entropyConfigurationMapper.GetConfiguration<T>().GeneratorService;
             if (generator != null)
             {
-                return await generator.Fetch(entropyFilterDto);
+                return await generator.Fetch(entropyFilter);
             }
 
-            return default;
+            return null;
         }
 
 

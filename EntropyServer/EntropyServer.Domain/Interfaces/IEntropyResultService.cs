@@ -1,10 +1,11 @@
-﻿using EntropyServer.Domain.TransferObjects;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace EntropyServer.Domain.Interfaces
 {
-    public interface IEntropyResultService
+    public interface IEntropyResultService<T>
     {
-        Task<IEntropyGenerationResult<T>> GetResult<T>(EntropyFilterDto entropyFilterDto);
+        Task<IEntropyGenerationResult<T>> GetResult();
+
+        Task<IEntropyGenerationResult<T>> GetResult(IEntropyFilter entropyFilter);
     }
 }

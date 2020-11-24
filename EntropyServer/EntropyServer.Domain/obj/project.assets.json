@@ -10,16 +10,6 @@
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
-      },
-      "EntropyServer.Extensions/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/EntropyServer.Extensions.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EntropyServer.Extensions.dll": {}
-        }
       }
     }
   },
@@ -37,16 +27,10 @@
         "microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec"
       ]
-    },
-    "EntropyServer.Extensions/1.0.0": {
-      "type": "project",
-      "path": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj",
-      "msbuildProject": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "EntropyServer.Extensions >= 1.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 3.1.9"
     ]
   },
@@ -80,11 +64,7 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {
-            "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj": {
-              "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

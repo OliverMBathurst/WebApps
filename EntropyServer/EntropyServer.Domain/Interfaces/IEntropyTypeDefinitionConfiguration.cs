@@ -4,9 +4,9 @@ namespace EntropyServer.Domain.Interfaces
 {
     public interface IEntropyTypeDefinitionConfiguration<T>
     {
-        IEntropyTypeGeneratorService<T> GeneratorService { get; set; }
+        IEntropyGeneratorService<T> GeneratorService { get; set; }
 
-        IEntropyTypeResultService<T> ResultService { get; set; }
+        IEntropyResultService<T> ResultService { get; set; }
 
         string TextValue { get; set; }
 

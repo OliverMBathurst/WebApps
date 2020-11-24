@@ -5,9 +5,9 @@ namespace EntropyServer.Infrastructure.Configuration
 {
     public sealed class EntropyTypeDefinitionConfiguration<T> : IEntropyTypeDefinitionConfiguration<T>
     {
-        public IEntropyTypeGeneratorService<T> GeneratorService { get; set; }
+        public IEntropyGeneratorService<T> GeneratorService { get; set; }
 
-        public IEntropyTypeResultService<T> ResultService { get; set; }
+        public IEntropyResultService<T> ResultService { get; set; }
 
         public int NumericValue { get; set; }
 

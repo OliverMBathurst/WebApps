@@ -1,13 +1,13 @@
-﻿using EntropyServer.Domain.Enums;
+﻿using System.Collections.Concurrent;
 
 namespace EntropyServer.Domain.Interfaces
 {
-    public interface IEntropyPool
+    public interface IEntropyPool<T>
     {
-        void AddEntropy(EntropyType type, object entropy);
+        void AddEntropy(T entropy);
 
-        void AddSubPool(EntropyType type);
+        void DrainPool();
 
-        void DrainSubPool(EntropyType type);
+        ConcurrentBag<T> Pool { get; }
     }
 }

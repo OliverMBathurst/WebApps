@@ -1,7 +1,8 @@
 ﻿using EntropyServer.Domain.Enums;
+using EntropyServer.Domain.Filters;
 using EntropyServer.Domain.Interfaces;
 using EntropyServer.Domain.TransferObjects;
-using EntropyServer.Infrastructure.Mappers;
+using EntropyServer.Infrastructure.Mappings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
@@ -13,11 +14,11 @@ namespace EntropyServer.Controllers
     public class EntropyController : ControllerBase
     {
         private readonly ILogger<EntropyController> _logger;
-        private readonly IEntropyResultService _entropyResultService;
+        private readonly IEntropyResultMappingService _entropyResultService;
 
         public EntropyController(
             ILogger<EntropyController> logger,
-            IEntropyResultService entropyResultService)
+            IEntropyResultMappingService entropyResultService)
         {
             _logger = logger;
             _entropyResultService = entropyResultService;
@@ -33,7 +34,7 @@ namespace EntropyServer.Controllers
 
                 return entropyType switch
                 {
-                    EntropyType.Int => GetActionResultInternal(await _entropyResultService.GetResult<int>(entropyFilterDto)),
+                    EntropyType.Int => GetActionResultInternal(await _entropyResultService.GetResult<int>(EntropyFilter.Create(entropyFilterDto))),
                     _ => NotFound()
                 };
             }
