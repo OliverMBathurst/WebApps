@@ -7,8 +7,8 @@ namespace EntropyServer.Domain.Interfaces
     {
         Task<IEntropyGenerationResult<T>> Fetch();
 
-        Task<IEntropyGenerationResult<T>> Fetch(IEntropyFilter entropyFilter);
+        Task<IEntropyGenerationResult<T>> Fetch(IEntropyFilter entropyFilter = null);
 
-        Task<IEnumerable<T>> Fetch(int number);
+        Task<IEnumerable<IEntropyGenerationResult<T>>> Fetch(int number);
     }
 }

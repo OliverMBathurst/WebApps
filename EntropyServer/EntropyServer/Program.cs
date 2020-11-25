@@ -1,8 +1,8 @@
 using EntropyServer.Domain;
 using EntropyServer.Domain.Interfaces;
 using EntropyServer.Infrastructure.Data;
-using EntropyServer.Infrastructure.Generators;
 using EntropyServer.Infrastructure.Services.BackgroundServices;
+using EntropyServer.Infrastructure.Services.GeneratorServices;
 using EntropyServer.Infrastructure.Services.MappingServices;
 using EntropyServer.Infrastructure.Services.ResultServices;
 using Microsoft.AspNetCore.Hosting;
@@ -31,10 +31,14 @@ namespace EntropyServer
 
                     // Services types
                     .AddSingleton(typeof(IEntropyResultService<>), typeof(EntropyResultService<>))
-                    .AddSingleton(typeof(IEntropyGeneratorService<>), typeof(EntropyGeneratorService<>))
                     .AddSingleton<IEntropyServerBackgroundService, EntropyServerBackgroundService>()
                     .AddSingleton<IHostedService, EntropyServerBackgroundService>()
                     .AddSingleton<IEntropyResultMappingService, EntropyResultMappingService>()
+
+                    // Generator services
+                    .AddSingleton<IEntropyGeneratorService<int>, IntEntropyGeneratorService>()
+                    .AddSingleton<IEntropyGeneratorService<float>, FloatEntropyGeneratorService>()
+                    .AddSingleton<IEntropyGeneratorService<string>, HashEntropyGeneratorService>()
 
                     // Pool types
                     .AddSingleton(typeof(IEntropyPool<>), typeof(EntropyPool<>))
