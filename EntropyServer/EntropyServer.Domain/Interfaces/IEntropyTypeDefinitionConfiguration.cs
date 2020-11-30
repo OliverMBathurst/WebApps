@@ -6,8 +6,6 @@ namespace EntropyServer.Domain.Interfaces
     {
         IEntropyGeneratorService<T> GeneratorService { get; set; }
 
-        IEntropyResultService<T> ResultService { get; set; }
-
         string TextValue { get; set; }
 
         int NumericValue { get; set; }

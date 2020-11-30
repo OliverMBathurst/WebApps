@@ -14,14 +14,14 @@ namespace EntropyServer.Controllers
     public class EntropyController : ControllerBase
     {
         private readonly ILogger<EntropyController> _logger;
-        private readonly IEntropyResultMappingService _entropyResultService;
+        private readonly IEntropyResultMappingService _entropyResultMappingService;
 
         public EntropyController(
             ILogger<EntropyController> logger,
-            IEntropyResultMappingService entropyResultService)
+            IEntropyResultMappingService entropyResultMappingService)
         {
             _logger = logger;
-            _entropyResultService = entropyResultService;
+            _entropyResultMappingService = entropyResultMappingService;
         }
 
         [HttpGet]
@@ -34,7 +34,7 @@ namespace EntropyServer.Controllers
 
                 return entropyType switch
                 {
-                    EntropyType.Int => GetActionResultInternal(await _entropyResultService.GetResult<int>(EntropyFilter.Create(entropyFilterDto))),
+                    EntropyType.Int => GetActionResultInternal(await _entropyResultMappingService.GetResult<int>(EntropyFilter.Create(entropyFilterDto))),
                     _ => NotFound()
                 };
             }

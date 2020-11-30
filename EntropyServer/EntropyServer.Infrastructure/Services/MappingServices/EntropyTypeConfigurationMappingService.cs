@@ -1,7 +1,6 @@
 ﻿using EntropyServer.Domain.Enums;
 using EntropyServer.Domain.Interfaces;
 using EntropyServer.Infrastructure.Builders;
-using System;
 
 namespace EntropyServer.Infrastructure.Services.MappingServices
 {
@@ -23,23 +22,29 @@ namespace EntropyServer.Infrastructure.Services.MappingServices
             SetupConfigurations();
         }
 
-        public IEntropyTypeDefinitionConfiguration<int> IntegerConfiguration { get; private set; }
+        private IEntropyTypeDefinitionConfiguration<int> IntegerConfiguration { get; set; }
 
-        public IEntropyTypeDefinitionConfiguration<float> FloatConfiguration { get; private set; }
+        private IEntropyTypeDefinitionConfiguration<float> FloatConfiguration { get; set; }
 
-        public IEntropyTypeDefinitionConfiguration<string> HashConfiguration { get; private set; }
+        private IEntropyTypeDefinitionConfiguration<string> HashConfiguration { get; set; }
 
         public IEntropyTypeDefinitionConfiguration<T> GetConfiguration<T>()
         {
-            var prop = Array.Find(typeof(EntropyTypeConfigurationMappingService).GetProperties(), x => x.PropertyType.Equals(typeof(IEntropyTypeDefinitionConfiguration<T>)));
-            if (prop == null)
+            var targetType = typeof(T);
+            if (targetType == typeof(int))
             {
-                //throw a more specific exception here
-                throw new Exception();
+                return (IEntropyTypeDefinitionConfiguration<T>)IntegerConfiguration;
+            }
+            else if (targetType == typeof(float))
+            {
+                return (IEntropyTypeDefinitionConfiguration<T>)FloatConfiguration;
+            }
+            else if (targetType == typeof(string))
+            {
+                return (IEntropyTypeDefinitionConfiguration<T>)HashConfiguration;
             }
 
-
-            return (IEntropyTypeDefinitionConfiguration<T>)prop.GetValue(this);
+            return null;
         }
 
         private void SetupConfigurations()

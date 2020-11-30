@@ -9,7 +9,6 @@ namespace EntropyServer.Infrastructure.Builders
         public EntropyTypeDefinitionBuilder(IEntropyTypeRepository<T> typeRepository)
         {
             Configuration.GeneratorService = typeRepository.GeneratorService;
-            Configuration.ResultService = typeRepository.ResultService;
         }
 
         public IEntropyTypeDefinitionBuilder<T> SetTextValue(string value) {

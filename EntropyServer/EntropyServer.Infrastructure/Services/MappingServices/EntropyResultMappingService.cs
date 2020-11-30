@@ -9,6 +9,6 @@ namespace EntropyServer.Infrastructure.Services.MappingServices
 
         public EntropyResultMappingService(IEntropyTypeConfigurationMappingService entropyConfigurationMapper) => _entropyConfigurationMapper = entropyConfigurationMapper;
 
-        public async Task<IEntropyGenerationResult<T>> GetResult<T>(IEntropyFilter entropyFilter) => await _entropyConfigurationMapper.GetConfiguration<T>().ResultService.GetResult();
+        public async Task<IEntropyGenerationResult<T>> GetResult<T>(IEntropyFilter entropyFilter) => await _entropyConfigurationMapper.GetConfiguration<T>().GeneratorService.Fetch();
     }
 }

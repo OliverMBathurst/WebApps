@@ -8,6 +8,8 @@ namespace EntropyServer.Domain.Interfaces
 
         void DrainPool();
 
+        bool HasEntropy();
+
         ConcurrentBag<T> Pool { get; }
     }
 }

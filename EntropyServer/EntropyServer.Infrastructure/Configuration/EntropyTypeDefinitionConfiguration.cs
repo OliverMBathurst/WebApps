@@ -7,8 +7,6 @@ namespace EntropyServer.Infrastructure.Configuration
     {
         public IEntropyGeneratorService<T> GeneratorService { get; set; }
 
-        public IEntropyResultService<T> ResultService { get; set; }
-
         public int NumericValue { get; set; }
 
         public string TextValue { get; set; }

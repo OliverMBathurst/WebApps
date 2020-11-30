@@ -4,16 +4,11 @@ namespace EntropyServer.Infrastructure.Repositories
 {
     public sealed class EntropyTypeRepository<T> : IEntropyTypeRepository<T>
     {
-        public EntropyTypeRepository(
-            IEntropyGeneratorService<T> generatorService,
-            IEntropyResultService<T> resultService)
+        public EntropyTypeRepository(IEntropyGeneratorService<T> generatorService)
         {
             GeneratorService = generatorService;
-            ResultService = resultService;
         }
 
         public IEntropyGeneratorService<T> GeneratorService { get; }
-
-        public IEntropyResultService<T> ResultService { get; }
     }
 }

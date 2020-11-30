@@ -1,10 +1,9 @@
 using EntropyServer.Domain;
 using EntropyServer.Domain.Interfaces;
-using EntropyServer.Infrastructure.Data;
+using EntropyServer.Infrastructure.Repositories;
 using EntropyServer.Infrastructure.Services.BackgroundServices;
 using EntropyServer.Infrastructure.Services.GeneratorServices;
 using EntropyServer.Infrastructure.Services.MappingServices;
-using EntropyServer.Infrastructure.Services.ResultServices;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,12 +24,10 @@ namespace EntropyServer
                     webBuilder.UseStartup<Startup>();
                 }).ConfigureServices(services =>
                 {
-
-                    // Data-related types
-                    services.AddSingleton(typeof(IEntropyData<>), typeof(EntropyData<>))
-
                     // Services types
-                    .AddSingleton(typeof(IEntropyResultService<>), typeof(EntropyResultService<>))
+                    services
+                    .AddSingleton(typeof(IEntropyTypeRepository<>), typeof(EntropyTypeRepository<>))
+                    .AddSingleton<IEntropyPoolRepository, EntropyPoolRepository>()
                     .AddSingleton<IEntropyServerBackgroundService, EntropyServerBackgroundService>()
                     .AddSingleton<IHostedService, EntropyServerBackgroundService>()
                     .AddSingleton<IEntropyResultMappingService, EntropyResultMappingService>()

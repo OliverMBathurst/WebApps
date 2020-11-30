@@ -7,15 +7,15 @@ namespace EntropyServer.Infrastructure.Services.BackgroundServices
 {
     public sealed class EntropyServerBackgroundService : IHostedService, IEntropyServerBackgroundService
     {
-        private readonly IEntropyPool<int> _intEntropyPool;
-        private readonly IEntropyTypeConfigurationMappingService _entropyConfigurationMapper;
+        private readonly IEntropyPoolRepository _entropyPoolRepository;
+        private readonly IEntropyTypeConfigurationMappingService _entropyTypeConfigurationMappingService;
 
         public EntropyServerBackgroundService(
-            IEntropyPool<int> intEntropyPool,
-            IEntropyTypeConfigurationMappingService entropyGeneratorRepository)
+            IEntropyTypeConfigurationMappingService entropyTypeConfigurationMappingService,
+            IEntropyPoolRepository entropyPoolRepository)
         {
-            _intEntropyPool = intEntropyPool;
-            _entropyConfigurationMapper = entropyGeneratorRepository;
+            _entropyPoolRepository = entropyPoolRepository;
+            _entropyTypeConfigurationMappingService = entropyTypeConfigurationMappingService;
         }
 
         public async Task<IEntropyGenerationResult<T>> GetEntropy<T>() => await GetEntropyInternal<T>();
@@ -25,13 +25,30 @@ namespace EntropyServer.Infrastructure.Services.BackgroundServices
 
         private async Task<IEntropyGenerationResult<T>> GetEntropyInternal<T>(IEntropyFilter entropyFilter = null)
         {
-            var generator = _entropyConfigurationMapper.GetConfiguration<T>().GeneratorService;
-            if (generator != null)
+            if(entropyFilter != null)
             {
-                return await generator.Fetch(entropyFilter);
+
             }
 
-            return null;
+            if (_entropyPoolRepository.PoolExists<T>())
+            {
+                var pool = _entropyPoolRepository.GetPool<T>();
+
+                //check if there's entropy available, if not, generate new entropy
+
+
+                var generator = _entropyTypeConfigurationMappingService.GetConfiguration<T>().GeneratorService;
+                if (generator != null)
+                {
+                    return await generator.Fetch(entropyFilter);
+                }
+
+                return null;
+            }
+            else
+            {
+                throw new System.Exception();
+            }
         }
 
 
