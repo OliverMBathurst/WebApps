@@ -1,5 +1,9 @@
-﻿using EntropyServer.Domain.Interfaces;
+﻿using EntropyServer.Domain;
+using EntropyServer.Domain.Interfaces;
+using EntropyServer.Exceptions;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,36 +22,39 @@ namespace EntropyServer.Infrastructure.Services.BackgroundServices
             _entropyTypeConfigurationMappingService = entropyTypeConfigurationMappingService;
         }
 
-        public async Task<IEntropyGenerationResult<T>> GetEntropy<T>() => await GetEntropyInternal<T>();
+        public async Task<IEntropyGenerationResult<T>> GetEntropy<T>() => (await GetEntropyInternal<T>()).FirstOrDefault();
 
-        public async Task<IEntropyGenerationResult<T>> GetEntropy<T>(IEntropyFilter entropyFilter) => await GetEntropyInternal<T>(entropyFilter);
+        public async Task<IEnumerable<IEntropyGenerationResult<T>>> GetEntropy<T>(IEntropyFilter entropyFilter) => await GetEntropyInternal<T>(entropyFilter);
 
 
-        private async Task<IEntropyGenerationResult<T>> GetEntropyInternal<T>(IEntropyFilter entropyFilter = null)
+        private async Task<IEnumerable<IEntropyGenerationResult<T>>> GetEntropyInternal<T>(IEntropyFilter entropyFilter = null)
         {
-            if(entropyFilter != null)
+            var limit = entropyFilter != null ? entropyFilter.Limit : 1;
+
+            if (_entropyPoolRepository.TryGetPool<T>(out var pool))
             {
+                var entropy = pool.GetEntropy(limit).Select(x => EntropyGenerationResult<T>.Create(x));
 
-            }
-
-            if (_entropyPoolRepository.PoolExists<T>())
-            {
-                var pool = _entropyPoolRepository.GetPool<T>();
-
-                //check if there's entropy available, if not, generate new entropy
-
-
-                var generator = _entropyTypeConfigurationMappingService.GetConfiguration<T>().GeneratorService;
-                if (generator != null)
+                if (entropy.Count() < limit)
                 {
-                    return await generator.Fetch(entropyFilter);
+                    var generator = _entropyTypeConfigurationMappingService.GetConfiguration<T>().GeneratorService;
+                    if (generator != null)
+                    {
+                        return (await generator.Fetch(limit - entropy.Count())).Concat(entropy);
+                    }
+                    else
+                    {
+                        throw new NoSuchGeneratorException();
+                    }
                 }
-
-                return null;
+                else
+                {
+                    return entropy;
+                }
             }
             else
             {
-                throw new System.Exception();
+                throw new PoolDoesNotExistException();
             }
         }
 

@@ -1,6 +1,9 @@
 ﻿using EntropyServer.Domain.Enums;
 using EntropyServer.Domain.Interfaces;
+using EntropyServer.Extensions;
 using EntropyServer.Infrastructure.Builders;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EntropyServer.Infrastructure.Services.MappingServices
 {
@@ -19,56 +22,44 @@ namespace EntropyServer.Infrastructure.Services.MappingServices
             _floatEntropyTypeRepository = floatEntropyTypeRepository;
             _hashEntropyTypeRepository = hashEntropyTypeRepository;
 
-            SetupConfigurations();
+            AddConfigurations();
         }
-
-        private IEntropyTypeDefinitionConfiguration<int> IntegerConfiguration { get; set; }
-
-        private IEntropyTypeDefinitionConfiguration<float> FloatConfiguration { get; set; }
-
-        private IEntropyTypeDefinitionConfiguration<string> HashConfiguration { get; set; }
 
         public IEntropyTypeDefinitionConfiguration<T> GetConfiguration<T>()
-        {
-            var targetType = typeof(T);
-            if (targetType == typeof(int))
-            {
-                return (IEntropyTypeDefinitionConfiguration<T>)IntegerConfiguration;
-            }
-            else if (targetType == typeof(float))
-            {
-                return (IEntropyTypeDefinitionConfiguration<T>)FloatConfiguration;
-            }
-            else if (targetType == typeof(string))
-            {
-                return (IEntropyTypeDefinitionConfiguration<T>)HashConfiguration;
-            }
+            => Configurations.FirstOrDefault(x => x is IEntropyTypeDefinitionConfiguration<T>)?.Cast<IEntropyTypeDefinitionConfiguration<T>>();
 
-            return null;
-        }
+        public IEnumerable<object> Configurations { get; private set; }
 
-        private void SetupConfigurations()
+        private void AddConfigurations()
         {
-            IntegerConfiguration = new EntropyTypeDefinitionBuilder<int>(_intEntropyTypeRepository)
+            var integerConfiguration = new EntropyTypeDefinitionBuilder<int>(_intEntropyTypeRepository)
                 .SetDefaultValue(-1)
                 .SetEntropyType(EntropyType.Int)
                 .SetNumericValue((int)EntropyType.Int)
                 .SetTextValue("Integer")
                 .Configuration;
 
-            FloatConfiguration = new EntropyTypeDefinitionBuilder<float>(_floatEntropyTypeRepository)
+            var floatConfiguration = new EntropyTypeDefinitionBuilder<float>(_floatEntropyTypeRepository)
                 .SetDefaultValue(-1f)
                 .SetEntropyType(EntropyType.Float)
                 .SetNumericValue((int)EntropyType.Float)
                 .SetTextValue("Float")
                 .Configuration;
 
-            HashConfiguration = new EntropyTypeDefinitionBuilder<string>(_hashEntropyTypeRepository)
+            var hashConfiguration = new EntropyTypeDefinitionBuilder<string>(_hashEntropyTypeRepository)
                 .SetDefaultValue(string.Empty)
                 .SetEntropyType(EntropyType.Hash)
                 .SetNumericValue((int)EntropyType.Hash)
                 .SetTextValue("Hash")
                 .Configuration;
+
+
+            Configurations = new List<object>
+            {
+                integerConfiguration,
+                floatConfiguration,
+                hashConfiguration
+            };
         }
     }
 }

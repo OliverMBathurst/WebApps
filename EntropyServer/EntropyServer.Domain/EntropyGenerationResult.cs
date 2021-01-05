@@ -8,8 +8,8 @@ namespace EntropyServer.Domain
         private EntropyGenerationResult() { }
 
         public static IEntropyGenerationResult<T> Create(
-            bool success,
             T value,
+            bool success = true,
             Exception exception = null)
             => new EntropyGenerationResult<T>
                 {
@@ -18,11 +18,11 @@ namespace EntropyServer.Domain
                     Exception = exception
                 };
 
-        public bool Success { get; private set; }
+        public bool Success { get; init; }
 
-        public T Value { get; private set; }
+        public T Value { get; init; }
 
-        public Exception Exception { get; private set; }
+        public Exception Exception { get; init; }
 
         public DateTime Time => DateTime.Now;
     }

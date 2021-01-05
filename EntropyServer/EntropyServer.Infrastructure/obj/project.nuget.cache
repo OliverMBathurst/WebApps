@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zvcU9tgpJfmbPSAZldFGnZjKX2RZlAwKJSLFvewLMl+zVImoZY0THdoei7bRfr8UTIGbqXoiifKEaSgol6pSQg==",
+  "dgSpecHash": "FMq+PS7uE4grquDZQ1u9tmHuOU2YHen9214j13X8qC6lph0A8VBhHopdhYPrpGkzqTiRbeKOMv3y1X0gjUCVcA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Infrastructure\\EntropyServer.Infrastructure.csproj",
   "expectedPackageFiles": [

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EntropyServer.Domain.Interfaces
 {
@@ -6,6 +7,6 @@ namespace EntropyServer.Domain.Interfaces
     {
         Task<IEntropyGenerationResult<T>> GetEntropy<T>();
 
-        Task<IEntropyGenerationResult<T>> GetEntropy<T>(IEntropyFilter entropyFilter);
+        Task<IEnumerable<IEntropyGenerationResult<T>>> GetEntropy<T>(IEntropyFilter entropyFilter);
     }
 }

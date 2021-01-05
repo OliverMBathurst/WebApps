@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "Microsoft.Extensions.Logging.Abstractions/3.1.9": {
         "type": "package",
         "compile": {
@@ -9,6 +9,26 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        }
+      },
+      "EntropyServer.Exceptions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/EntropyServer.Exceptions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EntropyServer.Exceptions.dll": {}
+        }
+      },
+      "EntropyServer.Extensions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/EntropyServer.Extensions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EntropyServer.Extensions.dll": {}
         }
       }
     }
@@ -27,10 +47,22 @@
         "microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec"
       ]
+    },
+    "EntropyServer.Exceptions/1.0.0": {
+      "type": "project",
+      "path": "../EntropyServer.Exceptions/EntropyServer.Exceptions.csproj",
+      "msbuildProject": "../EntropyServer.Exceptions/EntropyServer.Exceptions.csproj"
+    },
+    "EntropyServer.Extensions/1.0.0": {
+      "type": "project",
+      "path": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj",
+      "msbuildProject": "../EntropyServer.Extensions/EntropyServer.Extensions.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0": [
+      "EntropyServer.Exceptions >= 1.0.0",
+      "EntropyServer.Extensions >= 1.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 3.1.9"
     ]
   },
@@ -55,16 +87,23 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+        "net5.0": {
+          "targetAlias": "netcoreapp5.0",
+          "projectReferences": {
+            "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Exceptions\\EntropyServer.Exceptions.csproj": {
+              "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Exceptions\\EntropyServer.Exceptions.csproj"
+            },
+            "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj": {
+              "projectPath": "C:\\Users\\Oliver\\source\\repos\\WebApps\\EntropyServer\\EntropyServer.Extensions\\EntropyServer.Extensions.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -74,8 +113,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "netcoreapp5.0",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": {
             "target": "Package",
@@ -97,7 +136,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

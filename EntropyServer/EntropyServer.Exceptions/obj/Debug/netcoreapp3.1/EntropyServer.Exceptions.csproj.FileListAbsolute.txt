@@ -1,0 +1,8 @@
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\bin\Debug\netcoreapp3.1\EntropyServer.Exceptions.deps.json
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\bin\Debug\netcoreapp3.1\EntropyServer.Exceptions.dll
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\bin\Debug\netcoreapp3.1\EntropyServer.Exceptions.pdb
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp3.1\EntropyServer.Exceptions.AssemblyInfoInputs.cache
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp3.1\EntropyServer.Exceptions.AssemblyInfo.cs
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp3.1\EntropyServer.Exceptions.csproj.CoreCompileInputs.cache
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp3.1\EntropyServer.Exceptions.dll
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp3.1\EntropyServer.Exceptions.pdb

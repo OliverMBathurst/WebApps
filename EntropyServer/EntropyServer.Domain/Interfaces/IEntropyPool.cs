@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace EntropyServer.Domain.Interfaces
 {
@@ -9,6 +10,8 @@ namespace EntropyServer.Domain.Interfaces
         void DrainPool();
 
         bool HasEntropy();
+
+        IEnumerable<T> GetEntropy(int limit);
 
         ConcurrentBag<T> Pool { get; }
     }

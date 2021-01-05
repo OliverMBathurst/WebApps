@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "EntropyServer.Domain/1.0.0": {
         "dependencies": {
+          "EntropyServer.Exceptions": "1.0.0",
+          "EntropyServer.Extensions": "1.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "3.1.9"
         },
         "runtime": {
@@ -20,6 +22,16 @@
             "assemblyVersion": "3.1.9.0",
             "fileVersion": "3.100.920.47302"
           }
+        }
+      },
+      "EntropyServer.Exceptions/1.0.0": {
+        "runtime": {
+          "EntropyServer.Exceptions.dll": {}
+        }
+      },
+      "EntropyServer.Extensions/1.0.0": {
+        "runtime": {
+          "EntropyServer.Extensions.dll": {}
         }
       }
     }
@@ -36,6 +48,16 @@
       "sha512": "sha512-W5fbF8qVR9SMVVJqDQLIR7meWbev6Pu/lbrm7LDNr4Sp7HOotr4k2UULTdFSXOi5aoDdkQZpWnq0ZSpjrR3tjg==",
       "path": "microsoft.extensions.logging.abstractions/3.1.9",
       "hashPath": "microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512"
+    },
+    "EntropyServer.Exceptions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EntropyServer.Extensions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

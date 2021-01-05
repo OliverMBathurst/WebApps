@@ -16,10 +16,11 @@ namespace EntropyServer.Domain.Filters
                 Limit = limit
             };
 
-        public static IEntropyFilter Create(EntropyFilterDto entropyFilterDto) => Create(entropyFilterDto.EntropyTypeID, entropyFilterDto.Limit);
+        public static IEntropyFilter Create(EntropyFilterDto entropyFilterDto) 
+            => Create(entropyFilterDto.EntropyTypeID, entropyFilterDto.Limit);
 
-        public int EntropyTypeID { get; private set; }
+        public int EntropyTypeID { get; init; }
 
-        public int Limit { get; private set; }
+        public int Limit { get; init; }
     }
 }
