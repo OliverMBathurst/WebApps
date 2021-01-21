@@ -10,12 +10,12 @@ namespace EntropyServer.Infrastructure.Services.GeneratorServices
     {
         public async Task<IEntropyGenerationResult<string>> Fetch()
         {
-            return EntropyGenerationResult<string>.Create(true, default);
+            return EntropyGenerationResult<string>.Create(default);
         }
 
         public async Task<IEntropyGenerationResult<string>> Fetch(IEntropyFilter entropyFilter = null)
         {
-            return EntropyGenerationResult<string>.Create(true, default);
+            return EntropyGenerationResult<string>.Create(default);
         }
 
         public async Task<IEnumerable<IEntropyGenerationResult<string>>> Fetch(int number)

@@ -1,3 +1,8 @@
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.AssemblyInfo.cs
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp5.0\EntropyServer.Infrastructure.deps.json
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp5.0\EntropyServer.Infrastructure.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp5.0\ref\EntropyServer.Infrastructure.dll
@@ -8,11 +13,6 @@ C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp5.0\EntropyServer.Domain.pdb
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp5.0\EntropyServer.Extensions.pdb
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\bin\Debug\netcoreapp5.0\EntropyServer.Exceptions.pdb
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.csprojAssemblyReference.cache
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.AssemblyInfo.cs
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.csproj.CopyComplete
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\EntropyServer.Infrastructure.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Infrastructure\obj\Debug\netcoreapp5.0\ref\EntropyServer.Infrastructure.dll

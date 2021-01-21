@@ -17,7 +17,7 @@ namespace EntropyServer.Infrastructure.Services.GeneratorServices
 
         public async Task<IEntropyGenerationResult<float>> Fetch()
         {
-            return EntropyGenerationResult<float>.Create(true, default);
+            return EntropyGenerationResult<float>.Create(default);
         }
 
         public async Task<IEntropyGenerationResult<float>> Fetch(IEntropyFilter entropyFilter = null)
@@ -37,7 +37,7 @@ namespace EntropyServer.Infrastructure.Services.GeneratorServices
                 _logger.LogError($"Could not generate entropy: {ex.Message}");
             }
 
-            return EntropyGenerationResult<float>.Create(true, default);
+            return EntropyGenerationResult<float>.Create(default);
         }
 
         public async Task<IEnumerable<IEntropyGenerationResult<float>>> Fetch(int number)
@@ -45,12 +45,12 @@ namespace EntropyServer.Infrastructure.Services.GeneratorServices
             return Array.Empty<IEntropyGenerationResult<float>>();
         }
 
-        private Dictionary<string, string> ValidateFilter(IEntropyFilter entropyFilterDto)
+        private static Dictionary<string, string> ValidateFilter(IEntropyFilter entropyFilterDto)
         {
             var errors = new Dictionary<string, string>();
             if (entropyFilterDto == null)
             {
-                return errors;
+                errors.Add("Filter", "Filter cannot be null");
             }
 
             return errors;

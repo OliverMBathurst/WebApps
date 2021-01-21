@@ -2,6 +2,7 @@ C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\bin\
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\bin\Debug\netcoreapp5.0\EntropyServer.Exceptions.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\bin\Debug\netcoreapp5.0\ref\EntropyServer.Exceptions.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\bin\Debug\netcoreapp5.0\EntropyServer.Exceptions.pdb
+C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp5.0\EntropyServer.Exceptions.csprojAssemblyReference.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp5.0\EntropyServer.Exceptions.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp5.0\EntropyServer.Exceptions.AssemblyInfoInputs.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Exceptions\obj\Debug\netcoreapp5.0\EntropyServer.Exceptions.AssemblyInfo.cs

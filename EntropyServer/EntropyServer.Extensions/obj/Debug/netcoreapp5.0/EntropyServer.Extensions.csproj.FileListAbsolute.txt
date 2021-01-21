@@ -2,7 +2,6 @@ C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\bin\
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\bin\Debug\netcoreapp5.0\EntropyServer.Extensions.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\bin\Debug\netcoreapp5.0\ref\EntropyServer.Extensions.dll
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\bin\Debug\netcoreapp5.0\EntropyServer.Extensions.pdb
-C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp5.0\EntropyServer.Extensions.csprojAssemblyReference.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp5.0\EntropyServer.Extensions.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp5.0\EntropyServer.Extensions.AssemblyInfoInputs.cache
 C:\Users\Oliver\source\repos\WebApps\EntropyServer\EntropyServer.Extensions\obj\Debug\netcoreapp5.0\EntropyServer.Extensions.AssemblyInfo.cs
